@@ -58,7 +58,7 @@ public class AddActivity extends AppCompatActivity {
 
 
         gestorSQL = new GestorSQL(context);
-        //llenarProductos ();
+        llenarProductos ();
         //consultarListaProductos();
         //regPedido();
         //actualizarEstadoSelected();
