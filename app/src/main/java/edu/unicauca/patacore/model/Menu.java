@@ -7,10 +7,13 @@ public class Menu {
     private String txtPrecio;
     private String txtDescription;
     private String img;
+    private int cantidad;
     //private byte[] image;
     public  Menu(){
 
     }
+
+
 
     public Menu(int id, String txtNombre, String txtPrecio, String img, String txtDescription) {
         this.id = id;
@@ -27,6 +30,13 @@ public class Menu {
     }
 
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public int getId() {
         return id;

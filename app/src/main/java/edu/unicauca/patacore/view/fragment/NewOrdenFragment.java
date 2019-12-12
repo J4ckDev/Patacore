@@ -80,7 +80,7 @@ public class NewOrdenFragment extends Fragment {
         //actualizarEstadoSelected();
         //consultaSQL();
 
-        adapter = new PedidosNewAdapterRecycler(context);
+        adapter = new PedidosNewAdapterRecycler(context, 1);
         //adapter = new PedidosNewAdapterRecycler(context);
         recyclerProductos.setAdapter(adapter);
         fabActualizarPedido = (FloatingActionButton)view.findViewById(R.id.fbtnActualizar);

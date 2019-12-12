@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -23,19 +21,22 @@ import edu.unicauca.patacore.data.ConexionSQLiteHelper;
 import edu.unicauca.patacore.data.GestorSQL;
 import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Producto;
+import edu.unicauca.patacore.model.Menu;
+import edu.unicauca.patacore.data.db.SQLiteFood;
 
 
 public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAdapterRecycler.ViewHolderProductos> {
 
-
+    int mesa;
     ConexionSQLiteHelper conn;
     GestorSQL gestorSQL;
+    SQLiteFood sqLiteFood;
 
     ArrayList<Producto> listaProductos;
     ArrayList<Pedido> listaPedidos;
     Context context;
 
-    Gson gson = new Gson ();
+    Gson gson = new Gson();
 
 
     public PedidosNewAdapterRecycler(ArrayList<Producto> listaProductos, Context context) {
@@ -43,21 +44,37 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         gestorSQL = new GestorSQL(context);
     }
 
-    public PedidosNewAdapterRecycler (Context context){
+    public PedidosNewAdapterRecycler(Context context, int mesa) {
+        this.mesa= mesa;
         this.context = context;
         gestorSQL = new GestorSQL(context);
-        listaProductos = gestorSQL.consultarProductos();
+        sqLiteFood = new SQLiteFood(context);
+        ArrayList<Menu> lst = sqLiteFood.buildListas();
+        listaProductos = new ArrayList<Producto>();
+
+        for (int i = 0; i < lst.size(); i++) {
+            Producto prod = new Producto ();
+
+            prod.setNombre(lst.get(i).getTxtNombre() );
+            prod.setCantidad(1);
+            prod.setImagen(R.drawable.panadero);
+            prod.setSelected (false);
+            prod.setDescripcion (lst.get(i).getTxtDescription());
+            listaProductos.add(prod);
+        }
+
+
         actualizarEstado();
     }
 
-    public Pedido getPedido (){
+    public Pedido getPedido() {
         Pedido pedido = new Pedido();
         pedido.setProductos(listaProductos);
         return pedido;
     }
 
-    private void actualizarEstado () {
-        Pedido pedido = gestorSQL.consPedido(1,1);
+    private void actualizarEstado() {
+        Pedido pedido = gestorSQL.consPedido(mesa, 1);
 
         ArrayList<Producto> listaProdPedidos = pedido.getProductos();
         int tArrPPed = listaProdPedidos.size();
@@ -67,7 +84,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         for (int i = 0; i < tArrPPed; i++) {
             for (int e = 0; e < tArrProd; e++) {
                 if (listaProductos.get(e).getNombre().equals(listaProdPedidos.get(i).getNombre())) {
-                    if (listaProdPedidos.get(i).getCantidad()>0) {
+                    if (listaProdPedidos.get(i).getCantidad() > 0) {
                         listaProductos.get(e).setSelected(true);
                         listaProductos.get(e).setCantidad(listaProdPedidos.get(i).getCantidad());
                     }
@@ -79,9 +96,8 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
     }
 
 
-
     public class ViewHolderProductos extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView etiNombre,etiInformacion;
+        TextView etiNombre, etiInformacion;
         ImageView etiFoto;
         EditText numProd;
 
@@ -104,16 +120,16 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
         }
 
-        void setOnClickListeners (){
+        void setOnClickListeners() {
             btnMas.setOnClickListener(this);
             btnMenos.setOnClickListener(this);
             checkProducto.setOnClickListener(this);
         }
 
-        int buscarProducto (String nombre){
+        int buscarProducto(String nombre) {
             int indice = -1;
-            for (int i=0;i<listaProductos.size();i++){
-                if (listaProductos.get(i).getNombre().equals(nombre)){
+            for (int i = 0; i < listaProductos.size(); i++) {
+                if (listaProductos.get(i).getNombre().equals(nombre)) {
                     indice = i;
                     break;
                 }
@@ -126,14 +142,14 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
             // Pasar el código de producto
             String nombre = (String) etiNombre.getText();
             int indice = buscarProducto(nombre);
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btnMas:
 
-                    if (indice != -1){
-                        int newCantidad = listaProductos.get(indice).getCantidad()+1;
+                    if (indice != -1) {
+                        int newCantidad = listaProductos.get(indice).getCantidad() + 1;
                         listaProductos.get(indice).setCantidad(newCantidad);
                         if (checkProducto.isChecked()) {
-                            gestorSQL.actualizarPedido(1,1, listaProductos.get(indice));
+                            gestorSQL.actualizarPedido(mesa, 1, listaProductos.get(indice));
                         }
                         numProd.setText(String.valueOf(newCantidad));
 
@@ -141,13 +157,13 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     break;
 
                 case R.id.btnMenos:
-                    if (indice != -1){
+                    if (indice != -1) {
                         int cantActual = listaProductos.get(indice).getCantidad();
                         if (cantActual > 1) {
-                            int newCantidad = cantActual -1;
+                            int newCantidad = cantActual - 1;
                             listaProductos.get(indice).setCantidad(newCantidad);
                             if (checkProducto.isChecked()) {
-                                gestorSQL.actualizarPedido(1, 1, listaProductos.get(indice));
+                                gestorSQL.actualizarPedido(mesa, 1, listaProductos.get(indice));
                             }
                             numProd.setText(String.valueOf(newCantidad));
                         }
@@ -155,14 +171,14 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     break;
 
                 case R.id.checkProd:
-                    if (indice != -1){
+                    if (indice != -1) {
                         listaProductos.get(indice).setSelected(checkProducto.isChecked());
 
-                        if (checkProducto.isChecked() && !(gestorSQL.existe(1,1, listaProductos.get(indice).getNombre()))) {
+                        if (checkProducto.isChecked() && !(gestorSQL.existe(mesa, 1, listaProductos.get(indice).getNombre()))) {
 
-                            gestorSQL.regPedido(1, "afasd", "fadfsd", listaProductos.get(indice).getNombre(), 1, listaProductos.get(indice).getCantidad());
-                        }else{
-                            gestorSQL.eliminarPedido(1,1, listaProductos.get(indice));
+                            gestorSQL.regPedido(mesa, "afasd", "fadfsd", listaProductos.get(indice).getNombre(), 1, listaProductos.get(indice).getCantidad());
+                        } else {
+                            gestorSQL.eliminarPedido(mesa, 1, listaProductos.get(indice));
                         }
 
                     }
@@ -170,10 +186,6 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
             }
         }
     }
-
-
-
-
 
 
     @Override

@@ -36,12 +36,14 @@ public class AddActivity extends AppCompatActivity {
     Context context;
     GestorSQL gestorSQL;
     FloatingActionButton fabActualizarPedido;
+    int mesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_new_orden);
-        getSupportActionBar().setTitle(getIntent().getExtras().get("mesa").toString());
+        mesa = Integer.parseInt(getIntent().getExtras().get("mesa").toString());
+        getSupportActionBar().setTitle("Mesa " + String.valueOf(mesa));
 
         context = getApplicationContext();
 
@@ -64,23 +66,23 @@ public class AddActivity extends AppCompatActivity {
         //actualizarEstadoSelected();
         //consultaSQL();
 
-        adapter = new PedidosNewAdapterRecycler(context);
+        adapter = new PedidosNewAdapterRecycler(context, mesa);
         //adapter = new PedidosNewAdapterRecycler(context);
         recyclerProductos.setAdapter(adapter);
         fabActualizarPedido = (FloatingActionButton)findViewById(R.id.fbtnActualizar);
         fabActualizarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listaProductos = gestorSQL.consPedido(1,1).getProductos();
+                listaProductos = gestorSQL.consPedido(mesa,1).getProductos();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(AddActivity.this);
-                alerta.setMessage(gestorSQL.cambiosPedido(1))
+                alerta.setMessage(gestorSQL.cambiosPedido(mesa))
                         .setTitle("Cambios pedido")
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                gestorSQL.eliminarTotalPedido(1,2);
+                                gestorSQL.eliminarTotalPedido(mesa,2);
                                 for (int i=0; i<listaProductos.size(); i++){
-                                    gestorSQL.regPedido(1, "afasd", "fadfsd", listaProductos.get(i).getNombre(), 2, listaProductos.get(i).getCantidad());
+                                    gestorSQL.regPedido(mesa, "afasd", "fadfsd", listaProductos.get(i).getNombre(), 2, listaProductos.get(i).getCantidad());
                                 }
                             }
                         })

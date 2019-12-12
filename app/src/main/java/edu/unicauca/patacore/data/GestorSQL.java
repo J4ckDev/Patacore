@@ -19,9 +19,10 @@ public class GestorSQL {
     private Gson gson;
     private ArrayList<Producto> listaProductos;
     private ArrayList<Pedido> listaPedidos;
-    ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "bd_productos", null, 1);
+    ConexionSQLiteHelper conn;
     public GestorSQL(Context context) {
         this.context = context;
+        conn = new ConexionSQLiteHelper(context, "pedidos", null, 1);
         gson = new Gson();
     }
 
@@ -100,7 +101,7 @@ public class GestorSQL {
 
 
     public void regPedido (int mesa, String fecha,String hora, String nombre, int estado, int cantidad){
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
+        //ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
         SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_ID, mesa);
@@ -117,8 +118,6 @@ public class GestorSQL {
 
     public Pedido consPedido (int mesa, int estado){
 
-        ConexionSQLiteHelper conn;
-        conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         // + " WHERE "+Utilidades.CAMPO_ID+"="+String.valueOf(mesa) +" AND "+Utilidades.CAMPO_ESTADO+" =1"
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_PEDIDO + " WHERE "+Utilidades.CAMPO_ID+"="+String.valueOf(mesa) +" AND "+Utilidades.CAMPO_ESTADO+" ="+String.valueOf(estado), null);
@@ -160,7 +159,6 @@ public class GestorSQL {
 
 
     public void actualizarPedido(int mesa,int estado, Producto producto) {
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
         SQLiteDatabase db=conn.getWritableDatabase();
 
         String[] parametros={String.valueOf(mesa),"1",producto.getNombre()};
@@ -173,7 +171,6 @@ public class GestorSQL {
         db.close();
     }
     public void eliminarPedido(int mesa, int estado, Producto producto){
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
         SQLiteDatabase db=conn.getWritableDatabase();
         String[] parametros={String.valueOf(mesa),String.valueOf(estado),producto.getNombre()};
 
@@ -183,7 +180,6 @@ public class GestorSQL {
     }
 
     public void eliminarTotalPedido(int mesa, int estado){
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "pedido", null, 1);
         SQLiteDatabase db=conn.getWritableDatabase();
         String[] parametros={String.valueOf(mesa),String.valueOf(estado)};
 
