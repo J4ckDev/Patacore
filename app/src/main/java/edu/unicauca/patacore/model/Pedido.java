@@ -3,33 +3,47 @@ package edu.unicauca.patacore.model;
 import java.util.ArrayList;
 
 public class Pedido {
-    private int codigo;
-    private String nombre;
+    private int mesa;
+    private String fecha;
+    private String hora;
     private int estado;
-    private ArrayList<Producto> Productos;
+    private ArrayList<Producto> productos;
 
 
-    public Pedido(int codigo, String nombre, int estado, ArrayList<Producto> productos) {
-        this.codigo = codigo;
-        this.nombre = nombre;
+
+    public Pedido (){};
+
+
+    public Pedido(int mesa, String fecha, String hora, int estado, ArrayList<Producto> productos) {
+        this.mesa = mesa;
+        this.fecha = fecha;
+        this.hora = hora;
         this.estado = estado;
-        Productos = productos;
+        this.productos = productos;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getMesa() {
+        return this.mesa;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public int getEstado() {
@@ -41,10 +55,10 @@ public class Pedido {
     }
 
     public ArrayList<Producto> getProductos() {
-        return Productos;
+        return productos;
     }
 
     public void setProductos(ArrayList<Producto> productos) {
-        Productos = productos;
+        this.productos = productos;
     }
 }

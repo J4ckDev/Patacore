@@ -27,33 +27,24 @@ public class BDMenu {
     public static final String DROG="DROP TABLE IF EXISTS"+ TABLE_MENU;
 
 
+    //Constantes campos tabla pedido
+    public static final String TABLA_PEDIDO ="pedido";
+    public static final String CAMPO_ID="id";
+    public static final String CAMPO_FECHA ="fecha";
+    public static final String CAMPO_HORA ="hora";
+    public static final String CAMPO_ESTADO ="estado";
+    public static final String CAMPO_NOM_PROD = "nombre";
+    public static final String CAMPO_CANT_PRODUCTO ="cantidad";
+
+
+    public static final String CREAR_TABLA_PEDIDO ="CREATE TABLE " +
+            ""+ TABLA_PEDIDO +" ("+CAMPO_ID+
+            " INTEGER, "+CAMPO_FECHA+" TEXT,"+ CAMPO_HORA +" TEXT,"+ CAMPO_ESTADO +" INTEGER,"
+            +CAMPO_NOM_PROD+" TEXT,"+CAMPO_CANT_PRODUCTO + " INTEGER)";
+
 };
 
 
-
-
-
-/*
-
-    public static final String TABLA_MENU="FOOD";
-    public static final String CAMPO_NOMBRE="name";
-    public static final String CAMPO_PRECIO="price";
-    public static final String CAMPO_IMG="image";
-
-    public static final String CREATE_TABLA_MENU="CREATE TABLE IF NOT EXISTS " +
-            ""+TABLA_MENU+" (id_food INTEGER PRIMARY KEY AUTOINCREMENT "+CAMPO_NOMBRE+" VARCHAR,"+CAMPO_PRECIO+" VARCHAR, "+CAMPO_IMG+" BLOG)";
-}
-//sqLiteFood.queryData("CREATE TABLE IF NOT EXISTS FOOD(id_food INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image BLOG)");
-
-" CREATE TABLE " + TABLE_NAME + " (" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_PERSON_NAME + " TEXT NOT NULL, " +
-                COLUMN_PERSON_AGE + " NUMBER NOT NULL, " +
-                COLUMN_PERSON_OCCUPATION + " TEXT NOT NULL, " +
-                COLUMN_PERSON_IMAGE + " BLOB NOT NULL);"
-        );
-
-*/
 
 
 

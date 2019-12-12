@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.unicauca.patacore.data.utilidades.Utilidades;
 import edu.unicauca.patacore.model.Menu;
 import edu.unicauca.patacore.view.fragment.MenuFragment;
 
@@ -42,6 +43,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         //sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_MEN);
         sqLiteDatabase.execSQL(BDMenu.CREATE_TABLE_FOOD);
 
+
         //CREAR PEDIDO
 
     }
@@ -49,6 +51,8 @@ public class SQLiteFood extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_MENU);
+
+
        /* String query;
         query = "DROP TABLE IF EXISTS profiles";
         database.execSQL(query);*/

@@ -7,14 +7,30 @@ public class Producto {
     private String anotacion;
     private int cantidad;
     private int imagen;
+    private boolean selected;
 
 
-    public Producto(int codigo, String nombre, String descripcion, int cantidad, int image) {
+    public Producto(){
+
+    }
+
+    public Producto(int codigo, String nombre, String descripcion, int cantidad, int imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.imagen = imagen;
+        this.selected = false;
+    }
+
+
+
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public int getCodigo() {
