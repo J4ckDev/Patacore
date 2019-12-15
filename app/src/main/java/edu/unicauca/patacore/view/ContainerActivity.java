@@ -76,9 +76,10 @@ public class ContainerActivity extends AppCompatActivity {
 
  //TOOLBAR
   //NO PROBLEM !!!!
-    public void showToolbar(boolean upBotton){
+    public void showToolbar(String title, boolean upBotton){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
 
 

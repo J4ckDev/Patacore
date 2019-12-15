@@ -76,7 +76,7 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
         sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
 
-        //volver atras
+        //Agregarle a la barra la opción de regresar atrás
         Toolbar toolbar = findViewById(R.id.toolbar);
         //ActionBar actionBar=getSupportActionBar();
         setSupportActionBar(toolbar);

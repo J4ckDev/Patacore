@@ -51,6 +51,12 @@
     <string name="txt_description">pollo,arroz</string>
 
     <!--Agregar Platos-->
-    <string name="titleAdd"></string>
+    <string name="titleAdd">Agregar Plato al Menú</string>
+    <string name="nameAddPlate">Ingrese el nombre</string>
+    <string name="priceAddPlate">Ingrese el precio</string>
+    <string name="urlAddPlate">Ingrese la Url de la foto</string>
+    <string name="descAddPlate">Ingrese la descripción</string>
+    <string name="btnAddPlate">Agregar</string>
+
 
 </resources>
