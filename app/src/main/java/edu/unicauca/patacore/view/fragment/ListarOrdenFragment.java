@@ -2,11 +2,18 @@ package edu.unicauca.patacore.view.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,6 +25,7 @@ import java.util.ArrayList;
 
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.adapter.PedidosAdapterRecyclerView;
+import edu.unicauca.patacore.data.db.SQLiteFood;
 import edu.unicauca.patacore.model.Pedidos;
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +36,7 @@ public class ListarOrdenFragment extends Fragment {
     public ListarOrdenFragment() {
         // Required empty public constructor
     }
+    int mesaOption=1;
 
 
 
@@ -37,19 +46,95 @@ public class ListarOrdenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_listar_orden, container, false);
+        final View viewe= inflater.inflate(R.layout.fragment_listar_orden, container, false);
+        //initialize the variables
+
+
+
+
+        //TOLBAR
+        //showToolbar("Lista Pedidos", false, view);
+        //return view;
+        //Appbar
+        Toolbar toolbar = viewe.findViewById(R.id.toolbarMesa);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        //Appbar page filter
+        Spinner cmbToolbar = (Spinner) viewe.findViewById(R.id.CmbToolbar);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                ((AppCompatActivity) getActivity()).getSupportActionBar().getThemedContext(),
+                R.layout.appbar_filter_mesa,
+                new String[]{"Mesa 1 ", "Mesa 2 ", "Mesa 3 "});
+
+        adapter.setDropDownViewResource(R.layout.appbar_filter_mesa);
+
+        cmbToolbar.setAdapter(adapter);
+
+        cmbToolbar.setAdapter(adapter);
+
+        cmbToolbar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                    //... Acciones al seleccionar una opción de la lista
+                //Log.i("Toolbar 3", "Seleccionada opción " + i);
+
+                switch (position) {
+                    case 0:
+                        mesaOption=1;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 1!"+ mesaOption, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case 1:
+                        mesaOption=2;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 2!"+mesaOption, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case 2:
+                        mesaOption=3;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 3!" +mesaOption, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //... Acciones al no existir ningún elemento seleccionado
+
+            }
+        });
+
+
+        return viewe;
+    }
+
+    public void recyclerview(View view, int mesaOption){
+        SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
+        SQLiteDatabase db= sqLiteFood.getWritableDatabase();
         RecyclerView pedidosRecycler =view.findViewById(R.id.menuListRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
         pedidosRecycler.setLayoutManager(linearLayoutManager);
-        PedidosAdapterRecyclerView pedidosAdapterRecyclerView =
-                new PedidosAdapterRecyclerView(buildLista(),R.layout.cardview_list, getActivity());
+        PedidosAdapterRecyclerView pedidosAdapterRecyclerView;
+        pedidosAdapterRecyclerView=new PedidosAdapterRecyclerView(sqLiteFood.getPedido(mesaOption),getActivity(),R.layout.cardview_list, getActivity());
         pedidosRecycler.setAdapter(pedidosAdapterRecyclerView);
-        //TOLBAR
-        showToolbar("Lista Pedidos", false, view);
-        return view;
+        pedidosAdapterRecyclerView.notifyDataSetChanged();
 
     }
+
+
   public ArrayList<Pedidos> buildLista(){
         ArrayList <Pedidos> pedidos= new ArrayList<>();
 
@@ -69,6 +154,8 @@ public class ListarOrdenFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
          ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     }
 

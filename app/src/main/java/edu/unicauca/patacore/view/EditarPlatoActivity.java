@@ -31,6 +31,7 @@ public class EditarPlatoActivity extends AppCompatActivity {
         try {
             //get intent to get person id
             receivedPersonId = getIntent().getLongExtra("MENU_ID", 1);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

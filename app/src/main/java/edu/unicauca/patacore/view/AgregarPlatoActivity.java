@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -66,14 +67,15 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 agregar();
+
             }
         });
         sqLiteFood.insertData("pollo", "5000","https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd"  );
-        sqLiteFood.insertData("pollo", "5000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
-        sqLiteFood.insertData("pollo", "5000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
-        sqLiteFood.insertData("pollo", "5000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
-        sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
-        sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
+        //sqLiteFood.insertData("pollo", "5000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
+        //sqLiteFood.insertData("pollo", "5000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
+        //sqLiteFood.insertData("pollo", "5000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
+        //sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
+        //sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
 
         //volver atras
         ActionBar actionBar=getSupportActionBar();
