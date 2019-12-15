@@ -1,55 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/icons"
     tools:context=".view.EditarPlatoActivity"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/titleUpdate"
+
+    <include layout="@layout/actionbar_toolbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update food"
-        android:textAlignment="center" />
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-    <EditText
-        android:id="@+id/foodNameUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/LinearIText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:gravity="center"
+            android:elevation="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/foodPriceUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Price" />
+            <ImageView
+                android:id="@+id/imgPlato"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:background="@drawable/updateplato" />
+
+            <TextView
+                android:id="@+id/titleUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titleUpdPlate"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="20sp" />
 
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <EditText
-        android:id="@+id/imgUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textUri"
-        android:hint="Image profile url" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiPwrd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/LinearIText">
 
-    <EditText
-        android:id="@+id/descriptionUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Descripcion" />
-    <Button
-        android:id="@+id/updateFoodButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Food"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/foodNameUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nameUpdPlate"
+                android:inputType="text" />
 
-</LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILaddP"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiPwrd">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/foodPriceUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/priceUpdPlate"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TILaddP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/imgUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/urlDupPlate"
+                android:inputType="textUri" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputImagen">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/descriptionUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/descUpdPlate"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/updateFoodButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnUpdPlate"
+            android:theme="@style/ButtonDarkLogin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TILDesc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

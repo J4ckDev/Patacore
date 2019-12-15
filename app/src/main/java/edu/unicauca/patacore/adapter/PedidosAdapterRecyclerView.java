@@ -1,6 +1,7 @@
 package edu.unicauca.patacore.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Picture;
 import android.text.Layout;
@@ -21,38 +22,55 @@ import java.text.CollationElementIterator;
 import java.util.ArrayList;
 
 import edu.unicauca.patacore.R;
+import edu.unicauca.patacore.model.Menu;
 import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.view.PedidoDetalleActivity;
 
 public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdapterRecyclerView.PedidosAViewHolder>{
 
 
+    private ArrayList<Pedidos> pedidosArrayList;
+
+    private int resource;
+    private Activity activity;
+    private Context context;
+    private RecyclerView mRecyclerV;
+    Menu menu;
+
+
+    public PedidosAdapterRecyclerView(ArrayList<Pedidos> pedidosArrayList, Context context, int resource, Activity activity) {
+        this.pedidosArrayList = pedidosArrayList;
+        this.context = context;
+        this.resource = resource;
+        this.activity = activity;
+    }
     public PedidosAdapterRecyclerView(ArrayList<Pedidos> pedidosArrayList, int resource, Activity activity) {
         this.pedidosArrayList = pedidosArrayList;
         this.resource = resource;
         this.activity = activity;
     }
 
-    private ArrayList<Pedidos> pedidosArrayList;
-    private int resource;
-    private Activity activity;
 
 
 
 
     @NonNull
     @Override
+
     public PedidosAViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
+
+        View view= LayoutInflater.from(parent.getContext()).inflate(resource,parent, false);
         return new PedidosAViewHolder(view);
     }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull PedidosAViewHolder holder, final int position) {
         //TODA LA LISTA DE ELEMENTOS
 
-       Pedidos pedido = pedidosArrayList.get(position);
 
+       Pedidos pedido = pedidosArrayList.get(position);
        holder.txtNombre.setText(pedido.getTxtNombre());
        holder.txtPrecio.setText(pedido.getTxtPrecio());
       // holder.img_card_list.setImageResource(pedidosArrayList.get(position).getImg());

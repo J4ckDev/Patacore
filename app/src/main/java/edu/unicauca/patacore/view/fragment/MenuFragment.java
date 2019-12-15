@@ -64,8 +64,10 @@ public class MenuFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_menu, container, false);
         init(view);
         //initialize the variables
+
         SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
         SQLiteDatabase db= sqLiteFood.getWritableDatabase();
+
         RecyclerView menuRecycler =view.findViewById(R.id.menuRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);

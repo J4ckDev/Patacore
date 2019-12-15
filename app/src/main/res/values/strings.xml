@@ -58,5 +58,12 @@
     <string name="descAddPlate">Ingrese la descripción</string>
     <string name="btnAddPlate">Agregar</string>
 
+    <!--Actualizar Platos-->
+    <string name="titleUpdPlate">Actualizar Plato del Menú</string>
+    <string name="nameUpdPlate">Nuevo nombre</string>
+    <string name="priceUpdPlate">Nuevo precio</string>
+    <string name="urlDupPlate">Nueva Url de la foto</string>
+    <string name="descUpdPlate">Nueva descripción</string>
+    <string name="btnUpdPlate">Actualizar</string>
 
 </resources>

@@ -8,7 +8,15 @@ public class Pedidos {
     private String imgCard;
     private String txtNombre;
     private String txtPrecio;
-private int img;
+    private int img;
+
+    public Pedidos( String imgCard, String txtNombre, String txtPrecio) {
+        this.imgCard = imgCard;
+        this.txtNombre = txtNombre;
+        this.txtPrecio = txtPrecio;
+    }
+    public Pedidos(){}
+
     public int getImg() {
         return img;
     }
@@ -42,10 +50,7 @@ private int img;
         this.txtPrecio = txtPrecio;
     }
 
-    public Pedidos( String imgCard, String txtNombre, String txtPrecio) {
-        this.imgCard = imgCard;
-        this.txtNombre = txtNombre;
-        this.txtPrecio = txtPrecio;
-    }
+
+
 }
 
