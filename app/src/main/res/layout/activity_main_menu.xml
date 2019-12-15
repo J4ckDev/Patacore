@@ -14,8 +14,9 @@
     tools:context=".MainMenuActivity"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/actionbar_toolbar"></include>
-    <include layout="@layout/bottombar"></include>
+    <include layout="@layout/actionbar_toolbar" />
+
+    <include layout="@layout/bottombar" />
 
 <ScrollView
     android:layout_width="match_parent"
@@ -26,9 +27,8 @@
     android:orientation="vertical">
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:theme="@style/Theme.AppCompat.Light"
         >
 

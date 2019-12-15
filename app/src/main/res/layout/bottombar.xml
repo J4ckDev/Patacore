@@ -10,6 +10,7 @@
     android:layout_alignParentBottom="true"
     android:layout_gravity="bottom|end"
     android:background="@color/colorSecondary"
+    android:elevation="12dp"
     app:menu="@menu/bottom_navigation_menu"
     app:itemIconTint="@color/colorBG"
     app:itemTextColor="@color/colorBG"

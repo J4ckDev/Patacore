@@ -10,6 +10,7 @@
         android:id="@+id/toolbarList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="12dp"
         android:title="Estado: "
         android:background="@color/colorPrimary"
         android:theme="@style/Theme.AppCompat.Light">
@@ -17,12 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/nro_mesa"
-            android:textSize="15dp"/>
+            android:textSize="15sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="2:00:00"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:paddingLeft="15dp">
 
         </TextView>

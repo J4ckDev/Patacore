@@ -2,16 +2,17 @@
     <string name="app_name">Patacoré</string>
 
     <!--Login-->
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Ingresar</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Ingresar</string>
     <string name="welcome">"Welcome JOHANA !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be > 5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="hint_username">Username</string>
+    <string name="hint_username">Nombre de Usuario</string>
+
     <!--card-->
     <string name="text_categoria">Platos Especiales</string>
     <string name="textdate_card">fecha y hora del pedido</string>
@@ -48,5 +49,8 @@
     <string name="tab_pedido">pedido</string>
     <string name="txt_mesa">1</string>
     <string name="txt_description">pollo,arroz</string>
+
+    <!--Agregar Platos-->
+    <string name="titleAdd"></string>
 
 </resources>
