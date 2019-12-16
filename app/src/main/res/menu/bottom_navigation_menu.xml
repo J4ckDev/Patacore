@@ -13,8 +13,6 @@
            android:icon="@drawable/ic_playlist_add_check"
            />
 
-
-            />
         <item
             android:id="@+id/listarTab"
             android:title="@string/tab_listar"

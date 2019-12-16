@@ -10,9 +10,11 @@
 
     <include layout="@layout/actionbar_toolbar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -37,7 +39,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Menú de Comida"
+                android:text="Menú de Platos"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="20sp" />
@@ -45,31 +47,25 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/fragmentMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/LinearIText"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            android:orientation="vertical">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/menuRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:elevation="0dp"
-                tools:listitem="@layout/cardview_menu"
-                >
+                tools:listitem="@layout/cardview_menu">
 
             </androidx.recyclerview.widget.RecyclerView>
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBtnPedido"
