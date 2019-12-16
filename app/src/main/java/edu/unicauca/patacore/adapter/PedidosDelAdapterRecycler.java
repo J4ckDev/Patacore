@@ -45,8 +45,8 @@ public class PedidosDelAdapterRecycler extends RecyclerView.Adapter<PedidosDelAd
         //TODA LA LISTA DE ELEMENTOS
 
        Pedidos pedido = pedidosArrayList.get(position);
-       holder.textNameCard.setText(pedido.getTxtNombre());
-       holder.textDateCard.setText(pedido.getTxtPrecio());
+       //holder.textNameCard.setText(pedido.get());
+       //holder.textDateCard.setText(pedido.getTxtPrecio());
        //holder.textDateActCard.setText(pedido.getImgCard());
     }
 

@@ -125,13 +125,11 @@ public class GestorSQL {
         listaProductos = new ArrayList<Producto>();
         Pedido pedido = new Pedido();
 
-
         while (cursor.moveToNext()) {
             pedido.setMesa(cursor.getInt(0));
             pedido.setFecha(cursor.getString(1));
             pedido.setHora(cursor.getString(2));
             pedido.setEstado(cursor.getInt(3));
-
             Producto producto = new Producto();
             producto.setNombre(cursor.getString(4));
             producto.setCantidad(cursor.getInt(5));

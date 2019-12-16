@@ -36,6 +36,63 @@ import edu.unicauca.patacore.view.AgregarPlatoActivity;
 public class MenuFragment extends Fragment {
     FloatingActionButton fabBtnPedido;
 
+    public MenuFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_menu, container, false);
+        View view= inflater.inflate(R.layout.fragment_menu, container, false);
+        init(view);
+        recyclerview(view);
+        //initialize the variables
+        //TOLBAR
+        //título quitado
+        showToolbar("", false, view);
+
+        fabBtnPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AgregarPlatoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+    }
+    public void init(View view){
+        fabBtnPedido= view.findViewById(R.id.fabBtnPedido);
+    }
+    public void recyclerview(View view){
+            SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
+        SQLiteDatabase db= sqLiteFood.getWritableDatabase();
+        RecyclerView menuRecycler =view.findViewById(R.id.menuRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
+        menuRecycler.setLayoutManager(linearLayoutManager);
+        PedidosMenuRecyclerView pedidosMenuRecyclerView =
+                new PedidosMenuRecyclerView(sqLiteFood.buildListas(),getActivity(), R.layout.cardview_menu, getActivity());
+        menuRecycler.setAdapter(pedidosMenuRecyclerView);
+        pedidosMenuRecyclerView.notifyDataSetChanged();
+    }
+
+    public void showToolbar(String title, boolean upBotton, View view){
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
+    }
+
+
+
+}
+
+
+
     /*private RecyclerView.LayoutManager mLayoutManager;
     private SQLiteFood sqLiteFood;
     private SQLiteDatabase db;
@@ -50,66 +107,8 @@ public class MenuFragment extends Fragment {
 
 */
 
-
-    public MenuFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_menu, container, false);
-        View view= inflater.inflate(R.layout.fragment_menu, container, false);
-        init(view);
-        //initialize the variables
-
-        SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
-        SQLiteDatabase db= sqLiteFood.getWritableDatabase();
-
-        RecyclerView menuRecycler =view.findViewById(R.id.menuRecycler);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
-        menuRecycler.setLayoutManager(linearLayoutManager);
-        PedidosMenuRecyclerView pedidosMenuRecyclerView =
-                new PedidosMenuRecyclerView(sqLiteFood.buildListas(),getActivity(), R.layout.cardview_menu, getActivity());
-        menuRecycler.setAdapter(pedidosMenuRecyclerView);
-        pedidosMenuRecyclerView.notifyDataSetChanged();
-        //TOLBAR
-        //título quitado
-        showToolbar("", false, view);
-
-        fabBtnPedido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AgregarPlatoActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        return view;
-    }
-
-    private void populaterecyclerView(String filter) {
-
-       //SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
-       //*adapter = new PedidosMenuRecyclerView(sqLiteFood.menuList(filter), getActivity(), mRecyclerView);
-        //mRecyclerView.setAdapter(adapter);*//*
-        //adapter= new PedidosMenuRecyclerView(buildLista(),R.layout.cardview_menu, getActivity());
-        //mRecyclerView.setAdapter(adapter);
-    }
-
-
-
-
-    public void init(View view){
-        fabBtnPedido= view.findViewById(R.id.fabBtnPedido);
-
-    }
-
-   /* private ArrayList<Menu> buildLista() {
+/*
+ /* private ArrayList<Menu> buildLista() {
         ArrayList <Menu> menu= new ArrayList<>();
 
         menu.add(new Menu("https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollo", "5000"  ));
@@ -120,18 +119,7 @@ public class MenuFragment extends Fragment {
 
         return menu;
     }*/
-    public void showToolbar(String title, boolean upBotton, View view){
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
 
-    }
-
-
-
-}
-/*
 
  //va en el oncreate// conn=new SQLiteFood(,"FoodDB.sqlite",null,1);
  //
@@ -144,7 +132,7 @@ public class MenuFragment extends Fragment {
  //                new PedidosMenuRecyclerView(buildLista(),R.layout.cardview_menu, getActivity());
  //        pedidosRecycler.setAdapter(pedidosAdapterRecyclerView);//finaliza oncreate
  //get all data from sqlite
- */
+
         /*Cursor cursor= AgregarPlatoActivity.sqLiteFood.getData("SELECT * FROM  FOOD");
         //list.clear();
         while (cursor.moveToNext()){

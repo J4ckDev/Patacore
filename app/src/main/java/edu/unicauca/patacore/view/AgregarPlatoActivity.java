@@ -52,18 +52,6 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         sqLiteFood = new SQLiteFood(this);
         db= sqLiteFood.getWritableDatabase();
 
-        //sqLiteFood.queryData("CREATE TABLE IF NOT EXISTS FOOD(id_food INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image BLOG)");
-        /*btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                ActivityCompat.requestPermissions(
-                        AgregarPlatoActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_CODE_GALLERY
-                );
-            }
-        });*/
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,11 +60,17 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             }
         });
         sqLiteFood.insertData("pollo", "5000","https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd"  );
-        //sqLiteFood.insertData("pollo", "5000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
-        //sqLiteFood.insertData("pollo", "5000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
-        //sqLiteFood.insertData("pollo", "5000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
-        //sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
-        //sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
+        sqLiteFood.insertData("pollo", "5000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
+        sqLiteFood.insertData("pollo", "5000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
+        sqLiteFood.insertData("pollo", "5000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
+        sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
+        sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
+
+        sqLiteFood.insertDataPedido("pollo", 5000,"https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd", 2, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("papa", 4000,"https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg",  "ddd", 2, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("arroz", 3000,"https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg",  "ddd", 2, 2, "a","a",2);
+        sqLiteFood.insertDataPedido("jugo", 2000,"https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "ddd", 2, 3, "a","a",2);
+
 
         //Agregarle a la barra la opción de regresar atrás
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -90,10 +84,7 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         }
     }
 
-
-
     public void agregar(){
-
         try {
             sqLiteFood.insertData(
 
@@ -119,24 +110,23 @@ public class AgregarPlatoActivity extends AppCompatActivity {
 
         }
     }
-      /* private ArrayList<Menu> menu() {
-        ArrayList <Menu> menu= new ArrayList<>();
 
-     menu.add(new Menu(, "pollo", "5000"  ));
-        menu.add(new Menu("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
-        menu.add(new Menu("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
-        menu.add(new Menu("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
-        menu.add(new Menu("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
-
-        return menu;
-    }*/
     private void goBackMenu() {
         Intent intent= new Intent(AgregarPlatoActivity.this, ContainerActivity.class);
         startActivity(intent);
     }
 
-
-    @Override
+      // agregamos a las variables lo que hay en los layaout
+    public void  init(){
+        agregarNombre = findViewById(R.id.agregarNombre);
+        agregarPrecio = findViewById(R.id.agregarPrecio);
+        agregarImagen = findViewById(R.id.agregarImagen);
+        agregarDescripcion= findViewById(R.id.agregarDescripcion);
+        btnAdd= findViewById(R.id.btnAdd);
+        imageView=findViewById(R.id.imgPlato);
+    }
+}
+/* @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode ==REQUEST_CODE_GALLERY){
             if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
@@ -165,31 +155,38 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-
-
-
-
-    }
-
-    private byte [] imageViewToByte(ImageView imageView) {
+    }*/
+/*  private byte [] imageViewToByte(ImageView imageView) {
         Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray= stream.toByteArray();
         return  byteArray;
 
-    }
+    }*/
+   /* private ArrayList<Menu> menu() {
+        ArrayList <Menu> menu= new ArrayList<>();
 
-    // agregamos a las variables lo que hay en los layaout
-    public void  init(){
-        agregarNombre = findViewById(R.id.agregarNombre);
-        agregarPrecio = findViewById(R.id.agregarPrecio);
-        agregarImagen = findViewById(R.id.agregarImagen);
-        agregarDescripcion= findViewById(R.id.agregarDescripcion);
-        btnAdd= findViewById(R.id.btnAdd);
-        imageView=findViewById(R.id.imgPlato);
-    }
-}
+     menu.add(new Menu(, "pollo", "5000"  ));
+        menu.add(new Menu("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
+        menu.add(new Menu("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
+        menu.add(new Menu("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
+        menu.add(new Menu("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
+
+        return menu;
+    }*/
+//sqLiteFood.queryData("CREATE TABLE IF NOT EXISTS FOOD(id_food INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image BLOG)");
+        /*btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ActivityCompat.requestPermissions(
+                        AgregarPlatoActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_CODE_GALLERY
+                );
+            }
+        });*/
 
 /*
         //init
