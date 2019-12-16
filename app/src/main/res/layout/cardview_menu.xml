@@ -90,6 +90,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:text="@string/titleP"
+                    android:paddingRight="5dp"
                     />
                 <TextView
                     android:id="@+id/txtPrecioMenu"
