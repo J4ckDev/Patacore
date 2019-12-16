@@ -12,33 +12,40 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_height_ped"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:elevation="4dp"
-        android:background="@color/colorSecondary">
+        android:layout_gravity="center"
+        android:background="@color/colorPrimaryLight"
+        android:elevation="4dp">
         <ImageView
             android:id="@+id/img_card_menu"
             android:layout_width="@dimen/img_card_list"
             android:layout_height="@dimen/img_card_list"
             android:background="@drawable/macet"
+            android:layout_gravity="center"
             android:layout_margin="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:layout_gravity="center"
+            android:padding="12dp"
+            android:background="@color/colorSecondary">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/txtIdMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="id"
-                    android:paddingRight="20dp"
-                   />
-                <TextView
+                    android:textColor="@color/colorPrimaryLight"
+                    android:text=""
+                    android:paddingRight="10dp"
+                    android:visibility="gone"
+                    />
+                <!--TextView
                     android:id="@+id/btnPrep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,31 +54,62 @@
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="viewStart"
                     android:gravity="center"
-                    cardview:ignore="RtlCompat" />
+                    cardview:ignore="RtlCompat" /-->
+
+                <TextView
+                    android:id="@+id/txtNombreMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_nombre"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tittlePrecio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/titleP"
+                    />
+                <TextView
+                    android:id="@+id/txtPrecioMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_precio"
+                    android:textSize="16sp"
+                    android:textColor="@color/icons"/>
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/txtNombreMenu"
+                android:id="@+id/tittleDesc"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/txt_nombre"
-                android:textColor="@color/colorBG"/>
-            <TextView
-                android:id="@+id/txtPrecioMenu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/txt_precio"
-                android:textColor="@color/colorBG"/>
+                android:layout_height="wrap_content"
+                android:text="@string/titleDe"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"/>
             <TextView
                 android:id="@+id/txtDescriptionMenu"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="@string/txt_description"
-                android:textColor="@color/colorBG"/>
+                android:textColor="@color/icons"
+                android:textSize="16sp"/>
 
         </LinearLayout>
 
     </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+</androidx.cardview.widget.CardView>

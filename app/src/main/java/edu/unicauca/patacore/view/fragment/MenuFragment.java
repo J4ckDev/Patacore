@@ -77,8 +77,8 @@ public class MenuFragment extends Fragment {
         menuRecycler.setAdapter(pedidosMenuRecyclerView);
         pedidosMenuRecyclerView.notifyDataSetChanged();
         //TOLBAR
-
-        showToolbar("Lista Pedidos", false, view);
+        //título quitado
+        showToolbar("", false, view);
 
         fabBtnPedido.setOnClickListener(new View.OnClickListener() {
             @Override

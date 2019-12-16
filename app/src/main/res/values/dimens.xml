@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!--medidas para las card-->
-    <dimen name="list_height_ped">150dp</dimen>
+    <dimen name="list_height_ped">170dp</dimen>
     <dimen name="list_height_btn">60dp</dimen>
     <dimen name="list_height_txt">20dp</dimen>
     <dimen name="firsttitle_card">20sp</dimen>

@@ -19,7 +19,9 @@
     <string name="textdatact_card">date</string>
     <string name="textdate_menu">27 10 2019</string>
     <string name="txt_nombre">Bandeja Paisa</string>
-    <string name="txt_precio">$20.000</string>
+    <string name="txt_precio">20.000</string>
+    <string name="titleP">Precio:</string>
+    <string name="titleDe">Descripción</string>
 
 
     <!--tabs-->
