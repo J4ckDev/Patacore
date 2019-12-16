@@ -100,11 +100,11 @@ public class ListarOrdenFragment extends Fragment {
             }
         });
 
-
+       // recyclerview(viewe);
         return viewe;
     }
 
-    public void recyclerview(View view, int mesaOption){
+/*    public void recyclerview(View view){
         SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
         SQLiteDatabase db= sqLiteFood.getWritableDatabase();
         RecyclerView pedidosRecycler =view.findViewById(R.id.menuListRecycler);
@@ -112,7 +112,20 @@ public class ListarOrdenFragment extends Fragment {
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
         pedidosRecycler.setLayoutManager(linearLayoutManager);
         PedidosAdapterRecyclerView pedidosAdapterRecyclerView;
-        pedidosAdapterRecyclerView=new PedidosAdapterRecyclerView(sqLiteFood.getPedido(mesaOption),getActivity(),R.layout.cardview_list, getActivity());
+        pedidosAdapterRecyclerView=new PedidosAdapterRecyclerView(sqLiteFood.buildPedidos(),getActivity(),R.layout.cardview_list, getActivity());
+        pedidosRecycler.setAdapter(pedidosAdapterRecyclerView);
+        pedidosAdapterRecyclerView.notifyDataSetChanged();
+
+    }*/
+    public void recyclerview(View view, int mesa){
+        SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
+        SQLiteDatabase db= sqLiteFood.getWritableDatabase();
+        RecyclerView pedidosRecycler =view.findViewById(R.id.menuListRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
+        pedidosRecycler.setLayoutManager(linearLayoutManager);
+        PedidosAdapterRecyclerView pedidosAdapterRecyclerView;
+        pedidosAdapterRecyclerView=new PedidosAdapterRecyclerView(sqLiteFood.getPedidoEstado(mesa),getActivity(),R.layout.cardview_list, getActivity());
         pedidosRecycler.setAdapter(pedidosAdapterRecyclerView);
         pedidosAdapterRecyclerView.notifyDataSetChanged();
 
@@ -132,16 +145,15 @@ public class ListarOrdenFragment extends Fragment {
 
 }
 
-/*
-  public ArrayList<Pedidos> buildLista(){
+ /* public ArrayList<Pedidos> buildLista(){
         ArrayList <Pedidos> pedidos= new ArrayList<>();
 
 
-      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
+        pedidos.add(new Pedidos("pollo", "5000","https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd", 2, 1, "a","a",2));
+        //pedidos.add(new Pedidos("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
+        //pedidos.add(new Pedidos("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
+        //pedidos.add(new Pedidos("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
+        //pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
 
         return pedidos;
     }*/

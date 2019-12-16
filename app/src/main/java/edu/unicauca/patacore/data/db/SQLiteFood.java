@@ -165,24 +165,28 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
     /**en listar pedido**/
 
-    public void insertDataPedido(String nombre, String cantidad, String mesa, String fecha, String hora, String estado){
+    public void insertDataPedido(String nombre, int precio, String imagen, String anotacion, int cantidad, int mesa, String fecha, String hora, int estado){
+
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO "+ BDMenu.TABLA_PEDIDO+" (nombre,cantidad, mesa, fecha, hora, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO "+ BDMenu.TABLA_PEDIDO+" (nombre, precio, imagen, anotacion, cantidad, mesa, fecha, hora, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, nombre);
-        statement.bindString(2, cantidad);
-        statement.bindString(3, mesa);
-        statement.bindString(4, fecha);
-        statement.bindString(5, hora);
-        statement.bindString(6, estado);
+        statement.bindString(2, String.valueOf(precio));
+        statement.bindString(3, imagen);
+        statement.bindString(4, anotacion);
+        statement.bindString(5, String.valueOf(cantidad));
+        statement.bindString(6, String.valueOf(mesa));
+        statement.bindString(7, fecha);
+        statement.bindString(8, hora);
+        statement.bindString(9, String.valueOf(estado));
         statement.executeInsert();
 
     }
     public ArrayList<Pedidos> buildPedidos() {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
-        String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
+        String query = "SELECT * FROM "+BDMenu.TABLA_PEDIDO;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Pedidos pedidos;
@@ -190,20 +194,26 @@ public class SQLiteFood extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 pedidos = new Pedidos();
-                pedidos.setImgCard(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
-                pedidos.setTxtNombre(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_NAME)));
-                pedidos.setTxtPrecio(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_PRICE)));
-                //menu.setTxtDescription(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_DESCRIPTION)));
-                // menu.setImage(cursor.getBlob(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
+                pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+                pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+                pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+                pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
+                pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
+                pedidos.setFecha(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_FECHA)));
+                pedidos.setHora(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_HORA)));
+                pedidos.setEstado(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ESTADO)));
+
                 pedidosrrayList.add(pedidos);
             } while (cursor.moveToNext());
         }
         return pedidosrrayList;
+
     }
-    public ArrayList<Pedidos> getPedido(int id) {
+
+    public ArrayList<Pedidos> buildPedidosPrueba() {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
-        //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
-        String query = "SELECT  * FROM " + BDMenu.TABLE_MENU + " WHERE id_food=" + id;
+        String query = "SELECT * FROM "+BDMenu.TABLA_PEDIDO;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Pedidos pedidos;
@@ -211,11 +221,80 @@ public class SQLiteFood extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 pedidos = new Pedidos();
-                pedidos.setImgCard(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
-                pedidos.setTxtNombre(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_NAME)));
-                pedidos.setTxtPrecio(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_PRICE)));
-                //menu.setTxtDescription(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_DESCRIPTION)));
-                // menu.setImage(cursor.getBlob(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
+                pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+                pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+                pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+
+                pedidosrrayList.add(pedidos);
+            } while (cursor.moveToNext());
+        }
+        return pedidosrrayList;
+
+    }
+    public Pedidos getPedidosDetalle(long id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE id="+ id;
+        Cursor cursor = db.rawQuery(query, null);
+
+        Pedidos receivedMenu = new Pedidos();
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            receivedMenu.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+            receivedMenu.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+            receivedMenu.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+            receivedMenu.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+
+        }
+        return receivedMenu;
+    }
+    public ArrayList<Pedidos> getPedido(long id) {
+        ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
+        //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
+        String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE id=" + id;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Pedidos pedidos;
+
+        if (cursor.moveToFirst()) {
+            do {
+                pedidos = new Pedidos();
+                pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+                pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+                pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+                pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
+                pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
+                pedidos.setFecha(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_FECHA)));
+                pedidos.setHora(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_HORA)));
+                pedidos.setEstado(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ESTADO)));
+                pedidosrrayList.add(pedidos);
+            } while (cursor.moveToNext());
+        }
+        return pedidosrrayList;
+
+
+    }
+    public ArrayList<Pedidos> getPedidoEstado(int mesa) {
+        ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
+        //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
+        String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE mesa=" + mesa + " and estado = 2 ";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Pedidos pedidos;
+
+        if (cursor.moveToFirst()) {
+            do {
+                pedidos = new Pedidos();
+                pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+                pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+                pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+                pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
+                pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
+                pedidos.setFecha(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_FECHA)));
+                pedidos.setHora(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_HORA)));
+                pedidos.setEstado(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ESTADO)));
                 pedidosrrayList.add(pedidos);
             } while (cursor.moveToNext());
         }

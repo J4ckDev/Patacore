@@ -70,29 +70,35 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
         //TODA LA LISTA DE ELEMENTOS
 
 
-       Pedidos pedido = pedidosArrayList.get(position);
-       holder.txtNombre.setText(pedido.getTxtNombre());
-       holder.txtPrecio.setText(pedido.getTxtPrecio());
+       final Pedidos pedido = pedidosArrayList.get(position);
+       holder.txtNombre.setText(pedido.getNombre());
+       holder.txtPrecio.setText(String.valueOf(pedido.getPrecio()));
       // holder.img_card_list.setImageResource(pedidosArrayList.get(position).getImg());
        Picasso.with(activity)
-               .load(pedido.getImgCard())
+               .load(pedido.getImagen())
                .resize(120, 120)
-               .placeholder(R.drawable.panadero)
                .error(R.drawable.panadero)
                .into(holder.img_card_list);
+        //.placeholder(R.drawable.panadero)
+
        holder.btnPrep.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent intent = new Intent(activity, PedidoDetalleActivity.class);
-               intent.putExtra("nombre", pedidosArrayList.get(position).getTxtNombre());
-               intent.putExtra("precio", pedidosArrayList.get(position).getTxtPrecio());
+               //Intent intent = new Intent(activity, PedidoDetalleActivity.class);
+               //intent.putExtra("id", pedidosArrayList.get(position).getId());
+               // activity.startActivity(intent);
+               goToUpdateActivity(pedido.getId());
 
-               activity.startActivity(intent);
 
            }
        });
 
 
+    }
+    private void goToUpdateActivity(long menuId){
+        Intent goToUpdate = new Intent(activity, PedidoDetalleActivity.class);
+        goToUpdate.putExtra("MENU_ID", menuId);
+        activity.startActivity(goToUpdate);
     }
 
     @Override

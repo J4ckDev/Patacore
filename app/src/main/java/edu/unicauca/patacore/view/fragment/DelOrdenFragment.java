@@ -53,9 +53,9 @@ public class DelOrdenFragment extends Fragment {
     public ArrayList<Pedidos> buildLista(){
         ArrayList <Pedidos> pedidos= new ArrayList<>();
 
-        pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg","Pedido en preparacion", "10/20/2019"));
-        pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "Pedido en preparación", "10/20/2019"));
-        pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "Pedido en preparación", "10/20/2019"));
+        //pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg","Pedido en preparacion", "10/20/2019"));
+       // pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "Pedido en preparación", "10/20/2019"));
+        //pedidos.add(new Pedidos( "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "Pedido en preparación", "10/20/2019"));
         return pedidos;
     }
 

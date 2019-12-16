@@ -78,22 +78,11 @@ public class PedidosMenuRecyclerView extends RecyclerView.Adapter<PedidosMenuRec
         Picasso.with(activity)
                 .load(menu.getImg())
                 .resize(120, 120)
-                .placeholder(R.drawable.panadero)
                 .error(R.drawable.panadero)
                 .into(holder.img_card_menu);
         holder.txtDescriptionMenu.setText(menu.getTxtDescription());
 
-
-        //holder.txtNombre.setText("Name: " + menu.getTxtNombre());
-        //holder.txtPrecio.setText("Price: " + menu.getTxtPrecio());
-
-        //byte [] foodImage =menu.getImage();
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
-        //holder.img_card_menu.setImageBitmap(bitmap);
-
-
-
-        //listen to single view layout click
+       //listen to single view layout click
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,6 +175,14 @@ public class PedidosMenuRecyclerView extends RecyclerView.Adapter<PedidosMenuRec
 
     }
 }
+//.placeholder(R.drawable.panadero)
+//holder.txtNombre.setText("Name: " + menu.getTxtNombre());
+//holder.txtPrecio.setText("Price: " + menu.getTxtPrecio());
+
+//byte [] foodImage =menu.getImage();
+//Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
+//holder.img_card_menu.setImageBitmap(bitmap);
+
 /*inicio holde para inflar una imagen
    /*Picasso.with(activity)
                 .load(menu.getImg())
