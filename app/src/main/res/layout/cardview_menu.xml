@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:background="@color/colorPrimaryLight"
+        android:background="@color/colorSecondaryLight"
         android:elevation="4dp">
         <ImageView
             android:id="@+id/img_card_menu"
@@ -24,6 +24,8 @@
             android:background="@drawable/macet"
             android:layout_gravity="center"
             android:layout_margin="10dp"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,13 +63,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_nombre"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryLight"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     />
 
             </LinearLayout>
+
+            <View style="@style/Divider.Horizontal"
+                android:id="@+id/divider"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,7 +86,7 @@
                     android:id="@+id/tittlePrecio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryLight"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:text="@string/titleP"
@@ -100,7 +108,7 @@
                 android:text="@string/titleDe"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimaryLight"/>
             <TextView
                 android:id="@+id/txtDescriptionMenu"
                 android:layout_width="match_parent"
