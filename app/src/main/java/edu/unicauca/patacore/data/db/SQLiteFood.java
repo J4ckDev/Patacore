@@ -42,6 +42,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         //SQLiteDatabase database = getWritableDatabase();
         //sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_MENU);
         sqLiteDatabase.execSQL(BDMenu.CREATE_TABLA_MENU);
+        sqLiteDatabase.execSQL(BDMenu.CREAR_TABLA_PEDIDO);
         //CREAR PEDIDO
 
     }
@@ -50,12 +51,13 @@ public class SQLiteFood extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int versionAnterior, int versionNueva) {
         sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_MENU);
+        sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_PEDIDO);
+
         onCreate(sqLiteDatabase);
     }
 
     /**create record**/
     public void saveNewMenuFood(Menu menu) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(BDMenu.COLUMN_FOOD_NAME, menu.getTxtNombre());
@@ -93,12 +95,10 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
     public ArrayList<Menu> buildListas() {
         ArrayList<Menu> menuArrayList = new ArrayList<>();
-
         String query = "SELECT *FROM " +BDMenu.TABLE_MENU;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Menu menu;
-
             if (cursor.moveToFirst()) {
                 do {
                     menu = new Menu();
@@ -164,6 +164,22 @@ public class SQLiteFood extends SQLiteOpenHelper {
     /**CRUD PEDIDO**/
 
     /**en listar pedido**/
+
+    public void insertDataPedido(String nombre, String cantidad, String mesa, String fecha, String hora, String estado){
+
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO "+ BDMenu.TABLA_PEDIDO+" (nombre,cantidad, mesa, fecha, hora, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, nombre);
+        statement.bindString(2, cantidad);
+        statement.bindString(3, mesa);
+        statement.bindString(4, fecha);
+        statement.bindString(5, hora);
+        statement.bindString(6, estado);
+        statement.executeInsert();
+
+    }
     public ArrayList<Pedidos> buildPedidos() {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
         String query = "SELECT * FROM "+BDMenu.TABLE_MENU;

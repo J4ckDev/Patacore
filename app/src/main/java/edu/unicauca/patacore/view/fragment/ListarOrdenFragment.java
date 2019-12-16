@@ -38,8 +38,6 @@ public class ListarOrdenFragment extends Fragment {
     }
     int mesaOption=1;
 
-
-
     @SuppressLint("WrongConstant")
 
     @Override
@@ -48,14 +46,7 @@ public class ListarOrdenFragment extends Fragment {
        // Inflate the layout for this fragment
         final View viewe= inflater.inflate(R.layout.fragment_listar_orden, container, false);
         //initialize the variables
-
-
-
-
         //TOLBAR
-        //showToolbar("Lista Pedidos", false, view);
-        //return view;
-        //Appbar
         Toolbar toolbar = viewe.findViewById(R.id.toolbarMesa);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -77,9 +68,6 @@ public class ListarOrdenFragment extends Fragment {
         cmbToolbar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
-                    //... Acciones al seleccionar una opción de la lista
-                //Log.i("Toolbar 3", "Seleccionada opción " + i);
 
                 switch (position) {
                     case 0:
@@ -103,15 +91,11 @@ public class ListarOrdenFragment extends Fragment {
                         Toast.makeText(getActivity(), "Spinner item 3!" +mesaOption, Toast.LENGTH_SHORT).show();
                         break;
                 }
-
-
-
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 //... Acciones al no existir ningún elemento seleccionado
+               // recyclerview(viewe,1);
 
             }
         });
@@ -135,20 +119,6 @@ public class ListarOrdenFragment extends Fragment {
     }
 
 
-  public ArrayList<Pedidos> buildLista(){
-        ArrayList <Pedidos> pedidos= new ArrayList<>();
-
-
-      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
-      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
-
-        return pedidos;
-    }
-
-
     public void showToolbar(String title, boolean upBotton, View view){
          Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -161,3 +131,17 @@ public class ListarOrdenFragment extends Fragment {
 
 
 }
+
+/*
+  public ArrayList<Pedidos> buildLista(){
+        ArrayList <Pedidos> pedidos= new ArrayList<>();
+
+
+      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
+      pedidos.add(new Pedidos("https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "pollo", "5000"  ));
+      pedidos.add(new Pedidos("https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "pollo", "5000"  ));
+      pedidos.add(new Pedidos("https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg", "pollo", "5000"  ));
+      pedidos.add(new Pedidos("https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg", "pollo", "5000"  ));
+
+        return pedidos;
+    }*/

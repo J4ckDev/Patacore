@@ -44,9 +44,6 @@ public class EditarPlatoActivity extends AppCompatActivity {
         imgUpdate.setText(menu.getImg());
         descriptionUpdate.setText(menu.getTxtDescription());
 
-
-
-
         //listen to add button click to update
         updateFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override

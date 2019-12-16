@@ -50,10 +50,8 @@ public class AddActivity extends AppCompatActivity {
 
 
         recyclerProductos = findViewById(R.id.recyclerProductos);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
-
         recyclerProductos.setLayoutManager(linearLayoutManager);
 
 

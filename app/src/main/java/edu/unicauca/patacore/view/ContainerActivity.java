@@ -51,9 +51,7 @@ public class ContainerActivity extends AppCompatActivity {
                             case R.id.listarTab:
                                 addFragment(new ListarOrdenFragment());
                                 break;
-                            case R.id.delTab:
-                                addFragment(new DelOrdenFragment());
-                                break;
+
                         }
 
                         return true;
