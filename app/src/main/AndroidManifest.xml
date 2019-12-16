@@ -20,11 +20,15 @@
         android:roundIcon="@mipmap/appicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.EditarPlatoActivity">
-
+        <activity android:name=".view.EditarPlatoActivity"
+            android:parentActivityName=".view.ContainerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.ContainerActivity"/>
         </activity>
         <activity android:name=".view.AgregarPlatoActivity"
-            android:parentActivityName=".view.ContainerActivity">
+            android:parentActivityName=".view.ContainerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.ContainerActivity"/>
         </activity>

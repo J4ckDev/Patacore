@@ -26,5 +26,13 @@
     <style name="IconLoginColor" parent="Theme.AppCompat.Light">
         <item name="android:tint">@color/colorSecondary</item>
     </style>
+    <!--Colores cajas de texto agregar y actualiar plato-->
+    <style name="EditTextAU" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorSecondary</item>
+        <item name="android:textColorHint">@color/colorSecondary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorSecondary</item>
+    </style>
+
 
 </resources>

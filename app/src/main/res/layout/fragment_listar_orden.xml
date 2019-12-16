@@ -15,8 +15,10 @@
        android:layout_height="match_parent"
        android:orientation="vertical"
          app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-        <include layout="@layout/actionbar_toolbar"></include>
-       <include layout="@layout/actionbar_list_estado"></include>
+
+         <include layout="@layout/actionbar_toolbar" />
+
+         <include layout="@layout/actionbar_list_estado" />
 
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/menuListRecycler"
