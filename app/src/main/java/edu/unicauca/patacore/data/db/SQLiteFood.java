@@ -248,7 +248,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         }
         return receivedMenu;
     }
-    public ArrayList<Pedidos> getPedido(long id) {
+    public ArrayList<Pedidos> getPedidGIT o(long id) {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
         //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
         String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE id=" + id;
