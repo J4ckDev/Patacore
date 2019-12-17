@@ -19,7 +19,9 @@
     <string name="textdatact_card">date</string>
     <string name="textdate_menu">27 10 2019</string>
     <string name="txt_nombre">Bandeja Paisa</string>
-    <string name="txt_precio">$20.000</string>
+    <string name="txt_precio">20.000</string>
+    <string name="titleP">Precio: </string>
+    <string name="titleDe">Descripción</string>
 
 
     <!--tabs-->
@@ -45,8 +47,10 @@
     <string name="cont_anot_detall">mas pollo, mas ensalada, sin arroz</string>
     <string name="txt_menu">papa, yuca, arroz, pollo</string>
     <string name="txt_info_menu">Contiene:</string>
-    <string name="tab_menu">menu</string>
-    <string name="tab_pedido">pedido</string>
+
+    <string name="tab_menu">Menú</string>
+    <string name="tab_pedido">Pedido</string>
+
     <string name="txt_mesa">1</string>
     <string name="txt_description">pollo,arroz</string>
 

@@ -29,9 +29,9 @@
 
             <ImageView
                 android:id="@+id/imgPlato"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_margin="@dimen/activity_vertical_margin"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/hor_margin"
                 android:background="@drawable/platonuevo" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/titleAdd"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryLight"
+                android:textColor="@color/icons"
                 android:textSize="20sp" />
 
 

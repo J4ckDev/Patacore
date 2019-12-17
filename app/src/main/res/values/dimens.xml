@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!--medidas para las card-->
-    <dimen name="list_height_ped">150dp</dimen>
+    <dimen name="list_height_ped">160dp</dimen>
     <dimen name="list_height_btn">60dp</dimen>
     <dimen name="list_height_txt">20dp</dimen>
     <dimen name="firsttitle_card">20sp</dimen>
@@ -14,7 +14,8 @@
     <dimen name="img_card_list">120dp</dimen>
     <!--medidas para las bootombar-->
     <dimen name="firstheight_bottombar">70sp</dimen>
-    <dimen name="fab_margin">5sp</dimen>
+    <dimen name="ver_margin">16sp</dimen>
+    <dimen name="hor_margin">8sp</dimen>
 
     <!-- <dimen name="padding_horizontal_loggin">52dp</dimen>-->
     <dimen name="borderLogin">4dp</dimen>

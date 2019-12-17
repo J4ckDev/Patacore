@@ -6,6 +6,7 @@
     <color name="colorPrimaryLight">#FECF39</color>
     <color name="PrimaryLightHighlight">#FFE77A</color>
     <color name="colorSecondary">#102842</color>
+    <color name="colorSecondaryLight">#133252</color>
     <color name="colorBG">#FFFFFF</color>
     <color name="primaryText">#FECF39</color>
     <color name="secondaryText">#102842</color>

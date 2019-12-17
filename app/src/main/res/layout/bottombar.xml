@@ -9,11 +9,11 @@
     android:id="@+id/bottombar"
     android:layout_alignParentBottom="true"
     android:layout_gravity="bottom|end"
-    android:background="@color/colorSecondary"
-    android:elevation="12dp"
+    android:background="@color/colorPrimary"
+    android:elevation="16dp"
     app:menu="@menu/bottom_navigation_menu"
-    app:itemIconTint="@color/colorBG"
-    app:itemTextColor="@color/colorBG"
+    app:itemIconTint="@color/colorPrimaryLight"
+    app:itemTextColor="@color/colorPrimaryLight"
     >
 
  <!--   app:itemTextColor="@color/colorPrimaryLight"

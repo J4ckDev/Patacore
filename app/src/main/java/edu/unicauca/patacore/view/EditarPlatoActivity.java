@@ -1,6 +1,8 @@
 package edu.unicauca.patacore.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,6 +55,17 @@ public class EditarPlatoActivity extends AppCompatActivity {
                 goBackMenu();
             }
         });
+
+        //Agregarle a la barra la opción de regresar atrás
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        //ActionBar actionBar=getSupportActionBar();
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null) {
+            getSupportActionBar().setTitle("");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
        
     }
     private void goBackMenu() {

@@ -51,8 +51,8 @@ public class MenuFragment extends Fragment {
         recyclerview(view);
         //initialize the variables
         //TOLBAR
-
-        showToolbar("Lista Pedidos", false, view);
+        //título quitado
+        showToolbar("", false, view);
 
         fabBtnPedido.setOnClickListener(new View.OnClickListener() {
             @Override
