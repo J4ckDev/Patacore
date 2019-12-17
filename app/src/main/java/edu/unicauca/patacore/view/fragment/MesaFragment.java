@@ -54,8 +54,13 @@ public class MesaFragment extends Fragment {
 
     private ArrayList<Mesa> buildLista() {
         ArrayList <Mesa> mesa= new ArrayList<>();
-        mesa.add(new Mesa("https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "1"));
-        mesa.add(new Mesa("https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "2"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "1"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "2"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "3"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "4"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "5"));
+        mesa.add(new Mesa("https://clipartstation.com/wp-content/uploads/2017/11/piring-clipart-8.png", "6"));
+
 
         return mesa;
 

@@ -31,6 +31,7 @@ public class BDMenu {
     public static final String CAMPO_NOM_PROD = "nombre";
     public static final String CAMPO_PRECIO = "precio";
     public static final String CAMPO_IMAGE = "imagen";
+    public static final String CAMPO_DESCRIPTION = "description";
     public static final String CAMPO_ANOTACIONES = "anotacion";
     public static final String CAMPO_CANT_PRODUCTO ="cantidad";
     public static final String CAMPO_MESA ="mesa";
@@ -42,7 +43,7 @@ public class BDMenu {
 
     public static final String CREAR_TABLA_PEDIDO ="CREATE TABLE IF NOT EXISTS " + TABLA_PEDIDO +
             " ("+CAMPO_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOM_PROD+" TEXT, "+
-            CAMPO_PRECIO+" INTEGER, "+ CAMPO_IMAGE+" TEXT, " +  CAMPO_ANOTACIONES+" TEXT, "
+            CAMPO_PRECIO+" INTEGER, "+ CAMPO_IMAGE+" TEXT, " +  CAMPO_DESCRIPTION+" TEXT, " +  CAMPO_ANOTACIONES+" TEXT, "
             +CAMPO_CANT_PRODUCTO + " INTEGER, "+ CAMPO_MESA +  " INTEGER, "
             +CAMPO_FECHA+" TEXT, "+ CAMPO_HORA +" TEXT, "+ CAMPO_ESTADO +" INTEGER)";
 

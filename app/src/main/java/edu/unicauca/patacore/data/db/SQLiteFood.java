@@ -165,22 +165,23 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
     /**en listar pedido**/
 
-    public void insertDataPedido(String nombre, int precio, String imagen, String anotacion, int cantidad, int mesa, String fecha, String hora, int estado){
+    public void insertDataPedido(String nombre, int precio, String imagen, String description, String anotacion, int cantidad, int mesa, String fecha, String hora, int estado){
 
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO "+ BDMenu.TABLA_PEDIDO+" (nombre, precio, imagen, anotacion, cantidad, mesa, fecha, hora, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO "+ BDMenu.TABLA_PEDIDO+" (nombre, precio, imagen,description, anotacion, cantidad, mesa, fecha, hora, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, nombre);
         statement.bindString(2, String.valueOf(precio));
         statement.bindString(3, imagen);
-        statement.bindString(4, anotacion);
-        statement.bindString(5, String.valueOf(cantidad));
-        statement.bindString(6, String.valueOf(mesa));
-        statement.bindString(7, fecha);
-        statement.bindString(8, hora);
-        statement.bindString(9, String.valueOf(estado));
+        statement.bindString(4, description);
+        statement.bindString(5, anotacion);
+        statement.bindString(6, String.valueOf(cantidad));
+        statement.bindString(7, String.valueOf(mesa));
+        statement.bindString(8, fecha);
+        statement.bindString(9, hora);
+        statement.bindString(10, String.valueOf(estado));
         statement.executeInsert();
 
     }
@@ -236,17 +237,23 @@ public class SQLiteFood extends SQLiteOpenHelper {
         String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE id="+ id;
         Cursor cursor = db.rawQuery(query, null);
 
-        Pedidos receivedMenu = new Pedidos();
+        Pedidos pedidos = new Pedidos();
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
 
-            receivedMenu.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
-            receivedMenu.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
-            receivedMenu.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
-            receivedMenu.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+            pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+            pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+            pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+            pedidos.setDescription(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_DESCRIPTION)));
+            pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+            pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
+            pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
+            pedidos.setFecha(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_FECHA)));
+            pedidos.setHora(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_HORA)));
+            pedidos.setEstado(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ESTADO)));
 
         }
-        return receivedMenu;
+        return pedidos;
     }
     public ArrayList<Pedidos> getPedido(long id) {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
@@ -262,6 +269,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
                 pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
                 pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
                 pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setDescription(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_DESCRIPTION)));
                 pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
                 pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
                 pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
@@ -289,6 +297,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
                 pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
                 pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
                 pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setDescription(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_DESCRIPTION)));
                 pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
                 pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
                 pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
