@@ -14,10 +14,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:background="@color/colorBG">
 
             <include layout="@layout/actionbar_toolbar" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/LinearIText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorSecondary"
+                android:gravity="center"
+                android:elevation="12dp">
+
+                <ImageView
+                    android:id="@+id/imgPlato"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="@dimen/hor_margin"
+                    android:background="@drawable/mesa" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pedidos por Mesa"
+                    android:textAlignment="center"
+                    android:textColor="@color/icons"
+                    android:textSize="20sp" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -25,11 +53,10 @@
                     android:id="@+id/mesasGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
-                    android:numColumns="auto_fit"
-                    android:columnWidth="100dp"
-                    android:alignmentMode="alignMargins"
-                    android:columnOrderPreserved="false" >
+                    android:padding="5dp"
+                    android:columnCount="2"
+                    android:columnWidth="180dp"
+                    android:alignmentMode="alignMargins" >
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/mesaRecycler"
                         android:layout_width="match_parent"
