@@ -15,6 +15,7 @@ android:id="@+id/menuCard">
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_height_ped"
     android:orientation="horizontal"
+
     android:background="@color/colorSecondary">
     <ImageView
         android:id="@+id/img_card_list"

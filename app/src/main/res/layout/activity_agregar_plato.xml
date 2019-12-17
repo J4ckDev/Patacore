@@ -5,118 +5,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/icons"
     tools:context=".view.AgregarPlatoActivity">
+
+    <include layout="@layout/actionbar_toolbar"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/LinearIText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:gravity="center"
+            android:elevation="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgPlato"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/hor_margin"
+                android:background="@drawable/platonuevo" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Agregar Platos"
-                />
+                android:text="@string/titleAdd"
+                android:textAlignment="center"
+                android:textColor="@color/icons"
+                android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/imgPlato"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
-                android:background="@drawable/panadero" />
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiPwrd"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                >
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiPwrd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/LinearIText">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/agregarNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/iconLoginLeft"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:layout_marginLeft="@dimen/zerodp"
-                android:hint="aqui va el nombre del plato"
-                android:inputType="text"
-               >
-            </com.google.android.material.textfield.TextInputEditText>
+                android:hint="@string/nameAddPlate"
+                android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILaddP"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiPwrd">
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/agregarPrecio"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/agregarPrecio"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="aqui va el precio"
-                    android:inputType="text">
+                android:layout_height="match_parent"
+                android:hint="@string/priceAddPlate"
+                android:inputType="number"/>
 
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputImagen"
-                android:layout_height="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TILaddP">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/agregarImagen"
                 android:layout_width="match_parent"
-                >
+                android:layout_height="match_parent"
+                android:hint="@string/urlAddPlate"
+                android:inputType="textUri" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/agregarImagen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/iconLoginLeft"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_marginLeft="@dimen/zerodp"
-                    android:hint="aqui va el nombre la url del plato"
-                    android:inputType="textUri"
-                    >
-                </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextAU"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputImagen">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/agregarDescripcion"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/agregarDescripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="aqui va el nombre la url del descripcion"
-                    android:inputType="text"
-                    >
+                android:layout_height="match_parent"
+                android:hint="@string/descAddPlate"
+                android:inputType="text"/>
 
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agregar"
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-        </LinearLayout>
-
-
-
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnAddPlate"
+            android:theme="@style/ButtonDarkLogin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TILDesc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
     <!-- <Button
                    android:id="@+id/btnDirMenu"
                    android:layout_width="wrap_content"

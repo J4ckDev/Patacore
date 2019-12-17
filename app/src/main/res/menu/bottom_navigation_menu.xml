@@ -13,20 +13,12 @@
            android:icon="@drawable/ic_playlist_add_check"
            />
 
-
-            />
         <item
             android:id="@+id/listarTab"
             android:title="@string/tab_listar"
             android:icon="@drawable/ic_add"
             />
 
-            />
-        <item
-            android:id="@+id/delTab"
-            android:title="@string/tab_del"
-            android:icon="@drawable/ic_delete"
-            app:tabBackground="@drawable/bottom_nav_color"
-            />
+
 
 </menu>

@@ -1,39 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.MenuFragment"
     android:fitsSystemWindows="true">
-    <include layout="@layout/actionbar_toolbar"></include>
-    <LinearLayout
-        android:id="@+id/fragmentMenu"
+
+    <include layout="@layout/actionbar_toolbar" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menuRecycler"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/LinearIText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/cardview_menu"
-            >
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:gravity="center"
+            android:elevation="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <ImageView
+                android:id="@+id/imgPlato"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/hor_margin"
+                android:background="@drawable/platos" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menú de Platos"
+                android:textAlignment="center"
+                android:textColor="@color/icons"
+                android:textSize="20sp" />
 
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </LinearLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/fragmentMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menuRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                tools:listitem="@layout/cardview_menu">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBtnPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"/>
+        android:elevation="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_add_circle_outline"
+        android:layout_marginRight="@dimen/hor_margin"
+        android:layout_marginBottom="@dimen/ver_margin"
+        android:translationZ="6dp"
+        android:tint="@color/colorSecondary"/>
 
 
 
