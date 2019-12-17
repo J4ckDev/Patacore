@@ -8,6 +8,8 @@ public class Menu {
     private String txtDescription;
     private String img;
     private int cantidad;
+    private boolean selected;
+    private String anotacion;
     //private byte[] image;
     public  Menu(){
 
@@ -76,6 +78,22 @@ public class Menu {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public String getAnotacion() {
+        return anotacion;
+    }
+
+    public void setAnotacion(String anotacion) {
+        this.anotacion = anotacion;
     }
 
     /*
