@@ -10,16 +10,18 @@ public class Pedidos {
     private int precio;
     private String imagen;
     private String anotacion;
+    private String description;
     private int cantidad;
     private int mesa;
     private String fecha;
     private String hora;
     private int estado;
 
-    public Pedidos(String nombre, int precio, String imagen, String anotacion, int cantidad, int mesa, String fecha, String hora, int estado) {
+    public Pedidos(String nombre, int precio, String imagen, String description, String anotacion, int cantidad, int mesa, String fecha, String hora, int estado) {
         this.nombre = nombre;
         this.precio = precio;
         this.imagen = imagen;
+        this.description = description;
         this.anotacion = anotacion;
         this.cantidad = cantidad;
         this.mesa = mesa;
@@ -37,6 +39,14 @@ public class Pedidos {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getNombre() {
