@@ -14,9 +14,9 @@
     <string name="hint_username">Nombre de Usuario</string>
 
     <!--card-->
-    <string name="text_categoria">Platos Especiales</string>
-    <string name="textdate_card">fecha y hora del pedido</string>
-    <string name="textdatact_card">date</string>
+    <string name="text_categoria">Ver detalles</string>
+    <string name="textdate_card">Fecha y hora del pedido:</string>
+    <string name="textdatact_card">18/12/19 2:25pm</string>
     <string name="textdate_menu">27 10 2019</string>
     <string name="txt_nombre">Bandeja Paisa</string>
     <string name="txt_precio">20.000</string>

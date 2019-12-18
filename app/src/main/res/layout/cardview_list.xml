@@ -13,84 +13,132 @@ android:id="@+id/menuCard">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_height_ped"
+    android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:background="@color/colorSecondaryLight"
+    android:elevation="4dp">
 
-    android:background="@color/colorSecondary">
     <ImageView
         android:id="@+id/img_card_list"
         android:layout_width="@dimen/img_card_list"
         android:layout_height="@dimen/img_card_list"
         android:background="@drawable/macet"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         />
-    <LinearLayout
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="12dp">
-        <Button
-            android:id="@+id/btnPrep"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:background="@color/colorSecondary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--TextView
+                android:id="@+id/textDateCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textdate_card"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryLight"
+                android:paddingRight="5dp"
+                android:textSize="12sp"/-->
+
+            <TextView
+                android:id="@+id/textDatActCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                android:text="@string/textdatact_card"
+                android:textColor="@color/PrimaryLightHighlight"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+
+        <View style="@style/Divider.Horizontal"
+            android:id="@+id/divider"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_categoria"
-            android:background="@color/colorSecondary"
-            android:textColor="@color/colorPrimary"
-            android:textAlignment="viewStart"
-            android:gravity="center"
-            cardview:ignore="RtlCompat" />
+            android:text="@string/txt_nombre"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryLight"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/txtNombre"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/txt_nombre"
-                android:textColor="@color/colorBG"/>
+                android:layout_height="wrap_content"
+                android:text="Cantidad:"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimaryLight"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_cantidad"
+                android:textSize="14sp"
                 android:textColor="@color/colorBG"
-                android:paddingLeft="20dp"/>
+                />
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/txtPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/txt_precio"
-            android:textColor="@color/colorBG"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            >
+            android:layout_gravity="center"
+            android:orientation="horizontal">
             <TextView
-                android:id="@+id/textDateCard"
+                android:id="@+id/tittlePrecio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textdate_card"
-                android:textColor="@color/colorBG"
-                android:textSize="@dimen/secondstitle_Card"/>
-
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@string/titleP"
+                android:paddingRight="5dp"
+                />
             <TextView
-                android:id="@+id/textDatActCard"
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/textdatact_card"
-                android:textColor="@color/colorBG"
-                android:textSize="@dimen/date_card"/>
+                android:id="@+id/txtPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_precio"
+                android:textSize="14sp"
+                android:textColor="@color/icons"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnPrep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_categoria"
+            android:background="@color/colorSecondaryLight"
+            android:textColor="@color/colorPrimaryLight"
+            android:textAlignment="center"
+            android:gravity="center"
+            cardview:ignore="RtlCompat" />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </LinearLayout>
 </androidx.cardview.widget.CardView>
