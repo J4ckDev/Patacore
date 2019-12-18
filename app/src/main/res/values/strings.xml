@@ -23,7 +23,6 @@
     <string name="titleP">Precio: </string>
     <string name="titleDe">Descripción</string>
 
-
     <!--tabs-->
     <string name="tab_new">Nuevo</string>
     <string name="tab_add">Add</string>
@@ -37,12 +36,13 @@
     <string name="textPed">Pedido En Preparacion</string>
     <string name="textList">Listo Para Servir</string>
     <string name="textServido">Pedido Servido</string>
+    s
     <!--toolbar-->
     <string name="nro_mesa">MESA 1</string>
     <string name="txt_estado_toolbar">Servido</string>
     <string name="txt_cantidad">5</string>
     <string name="text_cantidad">10</string>
-    <string name="txt_cantidad_p">Platos</string>
+    <string name="txt_cantidad_p">Número de platos</string>
     <string name="title_anota_detall">Anotaciones</string>
     <string name="cont_anot_detall">mas pollo, mas ensalada, sin arroz</string>
     <string name="txt_menu">papa, yuca, arroz, pollo</string>

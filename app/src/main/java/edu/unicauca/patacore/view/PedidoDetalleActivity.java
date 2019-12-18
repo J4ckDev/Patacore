@@ -1,5 +1,6 @@
 package edu.unicauca.patacore.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -41,7 +42,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
         Pedidos pedidos = sqLiteFood.getPedidosDetalle(receivedPedidoId);
         //set field to this user data
         txtNombreDetalle.setText(pedidos.getNombre());
-        txtMenuDetalle.setText(pedidos.getDescription());
+        //txtMenuDetalle.setText(pedidos.getDescription());
         numCantidadDetalle.setText(String.valueOf( pedidos.getCantidad()));
         txtContAnotaDetalle.setText(pedidos.getAnotacion());
         Picasso.with(this)
@@ -57,7 +58,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
     }
     private void init() {
         txtNombreDetalle = findViewById(R.id.txtNombreDetalle);
-        txtMenuDetalle = findViewById(R.id.txtMenuDetalle);
+        //txtMenuDetalle = findViewById(R.id.txtMenuDetalle);
         numCantidadDetalle = findViewById(R.id.numCantidadDetalle);
         txtContAnotaDetalle = findViewById(R.id.txtContAnotaDetalle);
         imgPedidoDetalle = findViewById(R.id.imgPedidoDetalle);
@@ -70,8 +71,12 @@ public class PedidoDetalleActivity extends AppCompatActivity {
     public void showToolbar(String title, boolean upBotton){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null) {
+            getSupportActionBar().setTitle(title);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
+            getSupportActionBar().setDisplayShowHomeEnabled(upBotton);
+        }
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingList);
     }
 }
