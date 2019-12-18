@@ -50,14 +50,14 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/fragmentMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/menuRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:elevation="0dp"
                 tools:listitem="@layout/cardview_menu">
 
@@ -78,6 +78,7 @@
         android:layout_marginRight="@dimen/hor_margin"
         android:layout_marginBottom="@dimen/ver_margin"
         android:translationZ="6dp"
+        app:borderWidth="0dp"
         android:tint="@color/colorSecondary"/>
 
 

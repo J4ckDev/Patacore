@@ -14,15 +14,14 @@
     <string name="hint_username">Nombre de Usuario</string>
 
     <!--card-->
-    <string name="text_categoria">Platos Especiales</string>
-    <string name="textdate_card">fecha y hora del pedido</string>
-    <string name="textdatact_card">date</string>
+    <string name="text_categoria">Ver detalles</string>
+    <string name="textdate_card">Fecha y hora del pedido:</string>
+    <string name="textdatact_card">18/12/19 2:25pm</string>
     <string name="textdate_menu">27 10 2019</string>
     <string name="txt_nombre">Bandeja Paisa</string>
     <string name="txt_precio">20.000</string>
     <string name="titleP">Precio: </string>
     <string name="titleDe">Descripción</string>
-
 
     <!--tabs-->
     <string name="tab_new">Nuevo</string>
@@ -37,12 +36,13 @@
     <string name="textPed">Pedido En Preparacion</string>
     <string name="textList">Listo Para Servir</string>
     <string name="textServido">Pedido Servido</string>
+    s
     <!--toolbar-->
     <string name="nro_mesa">MESA 1</string>
     <string name="txt_estado_toolbar">Servido</string>
     <string name="txt_cantidad">5</string>
     <string name="text_cantidad">10</string>
-    <string name="txt_cantidad_p">Platos</string>
+    <string name="txt_cantidad_p">Número de platos</string>
     <string name="title_anota_detall">Anotaciones</string>
     <string name="cont_anot_detall">mas pollo, mas ensalada, sin arroz</string>
     <string name="txt_menu">papa, yuca, arroz, pollo</string>
@@ -69,5 +69,7 @@
     <string name="urlDupPlate">Nueva Url de la foto</string>
     <string name="descUpdPlate">Nueva descripción</string>
     <string name="btnUpdPlate">Actualizar</string>
+
+    <string name="titleMesa">Pedidos por Mesa</string>
 
 </resources>
