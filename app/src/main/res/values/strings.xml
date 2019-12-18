@@ -70,4 +70,6 @@
     <string name="descUpdPlate">Nueva descripción</string>
     <string name="btnUpdPlate">Actualizar</string>
 
+    <string name="titleMesa">Pedidos por Mesa</string>
+
 </resources>
