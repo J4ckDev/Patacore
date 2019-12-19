@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,10 +31,11 @@ public class SQLiteFood extends SQLiteOpenHelper {
     /*public SQLiteFood(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }*/
-
+    Context context;
     public SQLiteFood(Context context){
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
 
@@ -185,6 +187,23 @@ public class SQLiteFood extends SQLiteOpenHelper {
         statement.executeInsert();
 
     }
+
+    public void regPedido(int mesa, int estado, Menu menu) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(BDMenu.CAMPO_MESA, mesa);
+        values.put(BDMenu.CAMPO_FECHA, "");
+        values.put(BDMenu.CAMPO_HORA, "");
+        values.put(BDMenu.CAMPO_ESTADO, estado);
+        values.put(BDMenu.CAMPO_NOM_PROD, menu.getTxtNombre());
+        values.put(BDMenu.CAMPO_CANT_PRODUCTO, menu.getCantidad());
+        values.put(BDMenu.CAMPO_PRECIO, menu.getTxtPrecio());
+        values.put(BDMenu.CAMPO_ANOTACIONES, menu.getAnotacion());
+        values.put(BDMenu.CAMPO_DESCRIPTION, menu.getTxtDescription());
+        Long idResultante = db.insert(BDMenu.TABLA_PEDIDO, BDMenu.CAMPO_NOM_PROD, values);
+    }
+
+
     public ArrayList<Pedidos> buildPedidos() {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
         String query = "SELECT * FROM "+BDMenu.TABLA_PEDIDO;
@@ -232,6 +251,8 @@ public class SQLiteFood extends SQLiteOpenHelper {
         return pedidosrrayList;
 
     }
+
+
     public Pedidos getPedidosDetalle(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE id="+ id;
@@ -255,6 +276,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         }
         return pedidos;
     }
+
     public ArrayList<Pedidos> getPedido(long id) {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
         //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
@@ -283,6 +305,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
 
     }
+
     public ArrayList<Pedidos> getPedidoEstado(int mesa) {
         ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
         //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
@@ -308,8 +331,140 @@ public class SQLiteFood extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return pedidosrrayList;
+    }
+
+    public ArrayList<Pedidos> consPedido (int mesa, int estado) {
+        ArrayList<Pedidos> pedidosrrayList = new ArrayList<>();
+        //String query = "SELECT * FROM "+BDMenu.TABLE_MENU;
+        String query = "SELECT  * FROM " + BDMenu.TABLA_PEDIDO + " WHERE mesa=" + mesa + " and estado ="+ estado;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Pedidos pedidos;
+
+        if (cursor.moveToFirst()) {
+            do {
+                pedidos = new Pedidos();
+                pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
+                pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
+                pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
+                pedidos.setDescription(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_DESCRIPTION)));
+                pedidos.setAnotacion(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_ANOTACIONES)));
+                pedidos.setCantidad(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_CANT_PRODUCTO)));
+                pedidos.setMesa(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_MESA)));
+                pedidos.setFecha(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_FECHA)));
+                pedidos.setHora(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_HORA)));
+                pedidos.setEstado(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ESTADO)));
+                pedidosrrayList.add(pedidos);
+            } while (cursor.moveToNext());
+        }
+        return pedidosrrayList;
+    }
+
+    public boolean existe(int idPedido, int estado, String nombre) {
+        ArrayList<Pedidos> pedidos = consPedido(idPedido, estado);
+        ArrayList<String> codsPedido = new ArrayList<String>();
 
 
+        for (int i = 0; i < pedidos.size(); i++) {
+            codsPedido.add(pedidos.get(i).getNombre());
+        }
+        if (buscarProductoEnPedido(codsPedido, nombre) != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void actualizarPedido(int mesa, int estado, Menu pedido) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] parametros = {String.valueOf(mesa), "1", pedido.getTxtNombre()};
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_NOM_PROD, pedido.getTxtNombre());
+        values.put(Utilidades.CAMPO_CANT_PRODUCTO, pedido.getCantidad());
+        values.put(Utilidades.CAMPO_ESTADO, String.valueOf(estado));
+        db.update(BDMenu.TABLA_PEDIDO, values, BDMenu.CAMPO_MESA + "=? AND " + BDMenu.CAMPO_ESTADO + "=? AND " + BDMenu.CAMPO_NOM_PROD + "=?", parametros);
+
+        db.close();
+    }
+
+    public void eliminarPedido(int mesa, int estado, Menu producto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] parametros = {String.valueOf(mesa), String.valueOf(estado), producto.getTxtNombre()};
+        db.delete(BDMenu.TABLA_PEDIDO, BDMenu.CAMPO_MESA + "=? AND " + BDMenu.CAMPO_ESTADO + "=? AND " + BDMenu.CAMPO_NOM_PROD + "=?", parametros);
+        db.close();
+    }
+
+    public void eliminarTotalPedido(int mesa, int estado) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] parametros = {String.valueOf(mesa), String.valueOf(estado)};
+
+        db.delete(BDMenu.TABLA_PEDIDO, BDMenu.CAMPO_MESA + "=? AND " + BDMenu.CAMPO_ESTADO + "=?", parametros);
+
+        db.close();
+    }
+
+    private int buscarProductoEnPedido(ArrayList<String> listaCodigos, String codigo) {
+        int size = listaCodigos.size();
+        int posicion = -1;
+        int i = 0;
+        for (i = 0; i < size; i++) {
+            if (listaCodigos.get(i).equals(codigo)) {
+                posicion = i;
+                break;
+            }
+        }
+        return posicion;
+    }
+
+    public String cambiosPedido(int idPedido) {
+        ArrayList<Pedidos> newPedido = consPedido(idPedido, 1);
+
+        String cambios = "";
+        ArrayList<Pedidos> pedido = consPedido(idPedido, 2);
+
+        ArrayList<String> codsPedido = new ArrayList<String>();
+        for (int i = 0; i < pedido.size(); i++) {
+            codsPedido.add(pedido.get(i).getNombre());
+        }
+        ArrayList<String> codsNewPedido = new ArrayList<String>();
+        for (int i = 0; i < newPedido.size(); i++) {
+            codsNewPedido.add(newPedido.get(i).getNombre());
+        }
+        int tCP = codsNewPedido.size();
+        int i = 0;
+        for (i = 0; i < tCP; i++) {
+            int pos = buscarProductoEnPedido(codsPedido, codsNewPedido.get(i));
+            if (pos != -1) {
+                // Modificar el producto
+                int diferencia = newPedido.get(i).getCantidad() - pedido.get(pos).getCantidad();
+                if (diferencia >= 1) {
+                    cambios += "Añadir " + String.valueOf(diferencia) + " " + codsPedido.get(pos) + "\n";
+                } else if (diferencia < 0) {
+                    diferencia = -diferencia;
+                    cambios += "Quitar " + String.valueOf(diferencia) + " " + codsPedido.get(pos) + "\n";
+                }
+            } else {
+                cambios += "Añadir " + String.valueOf(newPedido.get(i).getCantidad()) + " " + codsNewPedido.get(i) + "\n";
+            }
+        }
+
+        // Recorrer pedidos anteriores
+        tCP = codsPedido.size();
+        for (i = 0; i < tCP; i++) {
+            int pos = buscarProductoEnPedido(codsNewPedido, codsPedido.get(i));
+            if (pos != -1) {
+                // Modificar el producto
+                //int diferencia = newPedido.getProductos().get(i).getCantidad() - pedido.getProductos().get(pos).getCantidad();
+            } else {
+                if (pedido.get(i).getCantidad() > 0) {
+                    cambios += "Quitar " + String.valueOf(pedido.get(i).getCantidad()) + " " + codsPedido.get(i) + "\n";
+                }
+            }
+        }
+
+
+        return cambios;
     }
 
 

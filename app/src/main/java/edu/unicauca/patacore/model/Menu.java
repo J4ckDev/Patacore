@@ -80,7 +80,7 @@ public class Menu {
         this.img = img;
     }
 
-    public boolean isSelected() {
+    public boolean getSelected() {
         return selected;
     }
 

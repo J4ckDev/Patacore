@@ -59,17 +59,9 @@ public class AgregarPlatoActivity extends AppCompatActivity {
 
             }
         });
-        sqLiteFood.insertData("pollo", "5000","https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd"  );
-        sqLiteFood.insertData("pollo", "5000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
-        sqLiteFood.insertData("pollo", "5000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
-        sqLiteFood.insertData("pollo", "5000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
-        sqLiteFood.insertData("pollo", "5000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
-        sqLiteFood.insertData( "pollo", "5000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
 
-        sqLiteFood.insertDataPedido("pollo", 5000,"https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd", "aa",2, 1, "a","a",2);
-        sqLiteFood.insertDataPedido("papa", 4000,"https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg",  "ddd", "aaa",2, 1, "a","a",2);
-        sqLiteFood.insertDataPedido("arroz", 3000,"https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg",  "ddd", "aaa",2, 2, "a","a",2);
-        sqLiteFood.insertDataPedido("jugo", 2000,"https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "ddd","aaa", 2, 3, "a","a",2);
+        //insertPedidosPrueba();
+        //insertProductosPrueba();
 
 
         //Agregarle a la barra la opción de regresar atrás
@@ -124,6 +116,23 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         agregarDescripcion= findViewById(R.id.agregarDescripcion);
         btnAdd= findViewById(R.id.btnAdd);
         imageView=findViewById(R.id.imgPlato);
+    }
+
+
+    public void insertProductosPrueba (){
+        sqLiteFood.insertData("Pollo", "5000","https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd"  );
+        sqLiteFood.insertData("Carne", "6000" , "https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg", "aa" );
+        sqLiteFood.insertData("Arroz", "7000", "https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg", "aa"  );
+        sqLiteFood.insertData("Atun", "8000","https://cdn.colombia.com/sdi/2011/08/02/bandeja-paisa-500927.jpg",  "aa"  );
+        sqLiteFood.insertData("Cerdo", "3000","https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "dd"  );
+        sqLiteFood.insertData( "Callo", "20000", "https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg", "pollitoo");
+    }
+
+    public void insertPedidosPrueba(){
+        sqLiteFood.insertDataPedido("pollo", 5000,"https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd", "aa",2, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("papa", 4000,"https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg",  "ddd", "aaa",2, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("arroz", 3000,"https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg",  "ddd", "aaa",2, 2, "a","a",2);
+        sqLiteFood.insertDataPedido("jugo", 2000,"https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "ddd","aaa", 2, 3, "a","a",2);
     }
 }
 /* @Override
