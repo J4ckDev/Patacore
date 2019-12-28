@@ -70,7 +70,7 @@ public class MenuFragment extends Fragment {
     public void recyclerview(View view){
             SQLiteFood sqLiteFood = new SQLiteFood(getActivity());
         SQLiteDatabase db= sqLiteFood.getWritableDatabase();
-        RecyclerView menuRecycler =view.findViewById(R.id.menuRecycler);
+        RecyclerView menuRecycler = view.findViewById(R.id.menuRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
         menuRecycler.setLayoutManager(linearLayoutManager);

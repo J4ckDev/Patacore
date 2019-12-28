@@ -37,7 +37,9 @@
 
         <activity android:name=".view.AddActivity" />
 
-        <activity android:name=".view.PedidoDetalleActivity" />
+        <activity android:name=".view.PedidoDetalleActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
 
         <activity
             android:name=".view.ContainerActivity"

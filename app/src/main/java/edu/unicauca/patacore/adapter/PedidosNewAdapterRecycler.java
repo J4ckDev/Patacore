@@ -9,67 +9,68 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.data.ConexionSQLiteHelper;
 import edu.unicauca.patacore.data.GestorSQL;
+import edu.unicauca.patacore.data.db.BDMenu;
 import edu.unicauca.patacore.model.Pedido;
+import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.model.Producto;
+import edu.unicauca.patacore.model.Menu;
+import edu.unicauca.patacore.data.db.SQLiteFood;
 
 
 public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAdapterRecycler.ViewHolderProductos> {
 
-
+    int mesa;
     ConexionSQLiteHelper conn;
-    GestorSQL gestorSQL;
+    SQLiteFood sqLiteFood;
 
-    ArrayList<Producto> listaProductos;
-    ArrayList<Pedido> listaPedidos;
+    ArrayList<Menu> listaMenu;
+
     Context context;
 
-    Gson gson = new Gson ();
+    Gson gson = new Gson();
 
 
-    public PedidosNewAdapterRecycler(ArrayList<Producto> listaProductos, Context context) {
-        this.listaProductos = listaProductos;
-        gestorSQL = new GestorSQL(context);
+    public PedidosNewAdapterRecycler(ArrayList<Menu> listaMenu, Context context) {
+        this.listaMenu = listaMenu;
+        sqLiteFood = new SQLiteFood(context);
     }
 
-    public PedidosNewAdapterRecycler (Context context){
+    public PedidosNewAdapterRecycler(Context context, int mesa) {
+        this.mesa= mesa;
         this.context = context;
-        gestorSQL = new GestorSQL(context);
-        listaProductos = gestorSQL.consultarProductos();
+        sqLiteFood = new SQLiteFood(context);
+        ArrayList<Menu> lst = sqLiteFood.buildListas();
+        listaMenu = new ArrayList<Menu>();
+        listaMenu = sqLiteFood.buildListas();
         actualizarEstado();
     }
 
-    public Pedido getPedido (){
-        Pedido pedido = new Pedido();
-        pedido.setProductos(listaProductos);
-        return pedido;
-    }
 
-    private void actualizarEstado () {
-        Pedido pedido = gestorSQL.consPedido(1,1);
+    private void actualizarEstado() {
+        ArrayList<Pedidos> listaProdPedidos = sqLiteFood.consPedido(mesa, 1);
 
-        ArrayList<Producto> listaProdPedidos = pedido.getProductos();
         int tArrPPed = listaProdPedidos.size();
 
         //Toast.makeText(context, "Tamaño productos pedidos: " + listaProdPedidos.get(0).getNombre(), Toast.LENGTH_SHORT).show();
-        int tArrProd = listaProductos.size();
+        int tArrProd = listaMenu.size();
         for (int i = 0; i < tArrPPed; i++) {
             for (int e = 0; e < tArrProd; e++) {
-                if (listaProductos.get(e).getNombre().equals(listaProdPedidos.get(i).getNombre())) {
-                    if (listaProdPedidos.get(i).getCantidad()>0) {
-                        listaProductos.get(e).setSelected(true);
-                        listaProductos.get(e).setCantidad(listaProdPedidos.get(i).getCantidad());
+                if (listaMenu.get(e).getTxtNombre().equals(listaProdPedidos.get(i).getNombre())) {
+                    if (listaProdPedidos.get(i).getCantidad() > 0) {
+                        listaMenu.get(e).setSelected(true);
+                        listaMenu.get(e).setCantidad(listaProdPedidos.get(i).getCantidad());
                     }
                     break;
                 }
@@ -79,9 +80,8 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
     }
 
 
-
     public class ViewHolderProductos extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView etiNombre,etiInformacion;
+        TextView etiNombre, etiInformacion;
         ImageView etiFoto;
         EditText numProd;
 
@@ -104,16 +104,16 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
         }
 
-        void setOnClickListeners (){
+        void setOnClickListeners() {
             btnMas.setOnClickListener(this);
             btnMenos.setOnClickListener(this);
             checkProducto.setOnClickListener(this);
         }
 
-        int buscarProducto (String nombre){
+        int buscarProducto(String nombre) {
             int indice = -1;
-            for (int i=0;i<listaProductos.size();i++){
-                if (listaProductos.get(i).getNombre().equals(nombre)){
+            for (int i = 0; i < listaMenu.size(); i++) {
+                if (listaMenu.get(i).getTxtNombre().equals(nombre)) {
                     indice = i;
                     break;
                 }
@@ -126,14 +126,14 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
             // Pasar el código de producto
             String nombre = (String) etiNombre.getText();
             int indice = buscarProducto(nombre);
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btnMas:
 
-                    if (indice != -1){
-                        int newCantidad = listaProductos.get(indice).getCantidad()+1;
-                        listaProductos.get(indice).setCantidad(newCantidad);
+                    if (indice != -1) {
+                        int newCantidad = listaMenu.get(indice).getCantidad() + 1;
+                        listaMenu.get(indice).setCantidad(newCantidad);
                         if (checkProducto.isChecked()) {
-                            gestorSQL.actualizarPedido(1,1, listaProductos.get(indice));
+                            sqLiteFood.actualizarPedido(mesa, 1, listaMenu.get(indice));
                         }
                         numProd.setText(String.valueOf(newCantidad));
 
@@ -141,13 +141,13 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     break;
 
                 case R.id.btnMenos:
-                    if (indice != -1){
-                        int cantActual = listaProductos.get(indice).getCantidad();
+                    if (indice != -1) {
+                        int cantActual = listaMenu.get(indice).getCantidad();
                         if (cantActual > 1) {
-                            int newCantidad = cantActual -1;
-                            listaProductos.get(indice).setCantidad(newCantidad);
+                            int newCantidad = cantActual - 1;
+                            listaMenu.get(indice).setCantidad(newCantidad);
                             if (checkProducto.isChecked()) {
-                                gestorSQL.actualizarPedido(1, 1, listaProductos.get(indice));
+                                sqLiteFood.actualizarPedido(mesa, 1, listaMenu.get(indice));
                             }
                             numProd.setText(String.valueOf(newCantidad));
                         }
@@ -155,14 +155,17 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     break;
 
                 case R.id.checkProd:
-                    if (indice != -1){
-                        listaProductos.get(indice).setSelected(checkProducto.isChecked());
-
-                        if (checkProducto.isChecked() && !(gestorSQL.existe(1,1, listaProductos.get(indice).getNombre()))) {
-
-                            gestorSQL.regPedido(1, "afasd", "fadfsd", listaProductos.get(indice).getNombre(), 1, listaProductos.get(indice).getCantidad());
-                        }else{
-                            gestorSQL.eliminarPedido(1,1, listaProductos.get(indice));
+                    if (indice != -1) {
+                        listaMenu.get(indice).setSelected(checkProducto.isChecked());
+                        if (checkProducto.isChecked() && listaMenu.get(indice).getCantidad()==0){
+                            listaMenu.get(indice).setCantidad(1);
+                            numProd.setText(String.valueOf(1));
+                        }
+                        if (checkProducto.isChecked() && !(sqLiteFood.existe(mesa, 1, listaMenu.get(indice).getTxtNombre()))) {
+                            sqLiteFood.regPedido(mesa,1,listaMenu.get(indice));
+                            //Toast.makeText(context, "Registrado", Toast.LENGTH_SHORT).show();
+                        } else {
+                            sqLiteFood.eliminarPedido(mesa, 1, listaMenu.get(indice));
                         }
 
                     }
@@ -170,10 +173,6 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
             }
         }
     }
-
-
-
-
 
 
     @Override
@@ -186,18 +185,18 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
     @Override
     public void onBindViewHolder(ViewHolderProductos holder, int position) {
 
-        holder.etiNombre.setText(listaProductos.get(position).getNombre());
-        holder.etiInformacion.setText(listaProductos.get(position).getDescripcion());
-        holder.etiFoto.setImageResource(listaProductos.get(position).getImagen());
-        holder.numProd.setText(String.valueOf(listaProductos.get(position).getCantidad()));
-        holder.checkProducto.setChecked(listaProductos.get(position).getSelected());
+        holder.etiNombre.setText(listaMenu.get(position).getTxtNombre());
+        holder.etiInformacion.setText(listaMenu.get(position).getTxtDescription());
+        holder.etiFoto.setImageResource(R.drawable.panadero);
+        holder.numProd.setText(String.valueOf(listaMenu.get(position).getCantidad()));
+        holder.checkProducto.setChecked(listaMenu.get(position).getSelected());
 
         holder.setOnClickListeners();
     }
 
     @Override
     public int getItemCount() {
-        return listaProductos.size();
+        return listaMenu.size();
     }
 
 }

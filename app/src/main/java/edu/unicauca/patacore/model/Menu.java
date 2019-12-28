@@ -7,10 +7,15 @@ public class Menu {
     private String txtPrecio;
     private String txtDescription;
     private String img;
+    private int cantidad;
+    private boolean selected;
+    private String anotacion;
     //private byte[] image;
     public  Menu(){
 
     }
+
+
 
     public Menu(int id, String txtNombre, String txtPrecio, String img, String txtDescription) {
         this.id = id;
@@ -27,6 +32,13 @@ public class Menu {
     }
 
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public int getId() {
         return id;
@@ -66,6 +78,22 @@ public class Menu {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public String getAnotacion() {
+        return anotacion;
+    }
+
+    public void setAnotacion(String anotacion) {
+        this.anotacion = anotacion;
     }
 
     /*
