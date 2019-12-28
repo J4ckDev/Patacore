@@ -75,7 +75,7 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
        holder.txtNombre.setText(pedidos.getNombre());
        holder.txtPrecio.setText(String.valueOf(pedidos.getPrecio()));
        holder.txtCantidadList.setText(String.valueOf(pedidos.getCantidad()));
-       holder.textDateCard.setText(String.valueOf(pedidos.getFecha()));
+       //holder.textDateCard.setText(String.valueOf(pedidos.getFecha()));
        holder.textDatActCard.setText(String.valueOf(pedidos.getHora()));
 
       // holder.img_card_list.setImageResource(pedidosArrayList.get(position).getImg());
