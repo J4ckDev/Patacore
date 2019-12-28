@@ -22,7 +22,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
     ImageView imgPedidoDetalle;
     private Button updateFoodButton;
     private SQLiteFood sqLiteFood;
-    private long receivedPedidoId;
+    private Long receivedPedidoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,15 @@ public class PedidoDetalleActivity extends AppCompatActivity {
 
         try {
             //get intent to get person id
-            receivedPedidoId = getIntent().getLongExtra("id", 1);
+            //receivedPedidoId = getIntent().getLongExtra("ID", 1);
+            receivedPedidoId=getIntent().getLongExtra("ID",4);
             //int a = getIntent().getExtras().get("id", 1);
+            //getSupportActionBar().setTitle(getIntent().getExtras().get("mesa").toString());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         Pedidos pedidos = sqLiteFood.getPedidosDetalle(receivedPedidoId);
         //set field to this user data
         txtNombreDetalle.setText(pedidos.getNombre());

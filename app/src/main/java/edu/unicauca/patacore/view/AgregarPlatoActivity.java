@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,7 +56,8 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                agregar();
+                //agregar();
+                validar();
 
             }
         });
@@ -76,6 +78,7 @@ public class AgregarPlatoActivity extends AppCompatActivity {
         }
     }
 
+
     public void agregar(){
         try {
             sqLiteFood.insertData(
@@ -91,9 +94,8 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             agregarPrecio.setText("");
             agregarImagen.setText("");
             agregarDescripcion.setText("");
-
             //imageView.setImageResource(R.drawable.panadero);
-            //goBackMenu();
+            goBackMenu();
 
 
         } catch (Exception e) {
@@ -101,6 +103,55 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
 
         }
+    }
+    public void validar(){
+        agregarNombre.setError(null);
+        agregarPrecio.setError(null);
+        agregarImagen.setError(null);
+        agregarDescripcion.setError(null);
+        String nombre= agregarNombre.getText().toString();
+        String precio=agregarPrecio.getText().toString();
+        String imagen=agregarImagen.getText().toString();
+        String description=agregarDescripcion.getText().toString();
+
+        if (TextUtils.isEmpty(nombre)){
+            agregarNombre.setError(getString(R.string.error_campo_obligatorio));
+            agregarNombre.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(precio)){
+            agregarPrecio.setError(getString(R.string.error_campo_obligatorio));
+            agregarPrecio.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(imagen)){
+            agregarImagen.setError(getString(R.string.error_campo_obligatorio));
+            agregarImagen.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(description)){
+            agregarDescripcion.setError(getString(R.string.error_campo_obligatorio));
+            agregarDescripcion.requestFocus();
+            return;
+
+        }
+        int precioInt= Integer.parseInt(precio);
+
+        if (precioInt ==0){
+            agregarPrecio.setError(getString(R.string.mayor_que_0));
+            agregarPrecio.requestFocus();
+            return;
+        }
+        else{
+            agregar();
+        }
+
+
+        // Toast.makeText(getApplicationContext(), "Validacion Correcta", Toast.LENGTH_SHORT).show();
+
     }
 
     private void goBackMenu() {

@@ -57,7 +57,7 @@ public class ListarOrdenFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 ((AppCompatActivity) getActivity()).getSupportActionBar().getThemedContext(),
                 R.layout.appbar_filter_mesa,
-                new String[]{"Mesa 1 ", "Mesa 2 ", "Mesa 3 "});
+                new String[]{"Mesa 1 ", "Mesa 2 ", "Mesa 3 ", "Mesa 4", "Mesa 5", "Mesa 6"});
 
         adapter.setDropDownViewResource(R.layout.appbar_filter_mesa);
 

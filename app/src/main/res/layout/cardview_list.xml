@@ -90,6 +90,7 @@ android:id="@+id/menuCard">
                 android:paddingRight="5dp"
                 android:textColor="@color/colorPrimaryLight"/>
             <TextView
+                android:id="@+id/txtCantidadList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_cantidad"
