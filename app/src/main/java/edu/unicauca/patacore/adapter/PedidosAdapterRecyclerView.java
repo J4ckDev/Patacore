@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.model.Menu;
+import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.view.PedidoDetalleActivity;
 
@@ -70,12 +71,16 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
         //TODA LA LISTA DE ELEMENTOS
 
 
-       final Pedidos pedido = pedidosArrayList.get(position);
-       holder.txtNombre.setText(pedido.getNombre());
-       holder.txtPrecio.setText(String.valueOf(pedido.getPrecio()));
+       final Pedidos pedidos = pedidosArrayList.get(position);
+       holder.txtNombre.setText(pedidos.getNombre());
+       holder.txtPrecio.setText(String.valueOf(pedidos.getPrecio()));
+       holder.txtCantidadList.setText(String.valueOf(pedidos.getCantidad()));
+       holder.textDateCard.setText(String.valueOf(pedidos.getFecha()));
+       holder.textDatActCard.setText(String.valueOf(pedidos.getHora()));
+
       // holder.img_card_list.setImageResource(pedidosArrayList.get(position).getImg());
-       Picasso.with(activity)
-               .load(pedido.getImagen())
+       Picasso.with(context)
+               .load(pedidos.getImagen())
                .resize(120, 120)
                .error(R.drawable.panadero)
                .into(holder.img_card_list);
@@ -87,7 +92,10 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
                //Intent intent = new Intent(activity, PedidoDetalleActivity.class);
                //intent.putExtra("id", pedidosArrayList.get(position).getId());
                // activity.startActivity(intent);
-               goToUpdateActivity(pedido.getId());
+               goToUpdateActivity(pedidos.getId());
+               //Intent intent = new Intent(context, PedidoDetalleActivity.class);
+               //intent.putExtra("ID", pedidos.getId());
+               //context.startActivity(intent);
 
 
            }
@@ -95,11 +103,14 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
 
 
     }
-    private void goToUpdateActivity(long menuId){
-        Intent goToUpdate = new Intent(activity, PedidoDetalleActivity.class);
-        goToUpdate.putExtra("MENU_ID", menuId);
-        activity.startActivity(goToUpdate);
+    private void goToUpdateActivity(long id){
+        Intent goToUpdate = new Intent(context, PedidoDetalleActivity.class);
+        goToUpdate.putExtra("ID", id);
+        context.startActivity(goToUpdate);
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -110,7 +121,7 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
 
 
         public Pedidos pedidos;
-        TextView txtNombre;
+        TextView txtNombre, txtCantidadList, textDateCard, textDatActCard;
         TextView txtPrecio;
         ImageView img_card_list;
         Button btnPrep;
@@ -123,6 +134,9 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
             img_card_list = itemView.findViewById(R.id.img_card_list);
             txtNombre = itemView.findViewById(R.id.txtNombre);
             txtPrecio = itemView.findViewById(R.id.txtPrecio);
+            txtCantidadList =itemView.findViewById(R.id.txtCantidadList);
+            textDateCard =itemView.findViewById(R.id.textDateCard);
+            textDatActCard =itemView.findViewById(R.id.textDatActCard);
 
         }
 

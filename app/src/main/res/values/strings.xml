@@ -70,4 +70,11 @@
     <string name="descUpdPlate">Nueva descripción</string>
     <string name="btnUpdPlate">Actualizar</string>
 
+    <!--ERRORES-->
+    <string name="error_campo_obligatorio">Campo Obligatorio</string>
+    <string name="error_campo_numerico">Campo Numerico</string>
+    <string name="mayor_que_0">Valor Mayor que 0</string>
+
+
+
 </resources>

@@ -38,7 +38,6 @@ public class MesaFragment extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_mesa, container, false);
         View view= inflater.inflate(R.layout.fragment_mesa, container, false);
-
         RecyclerView mesaRecycler =view.findViewById(R.id.mesaRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);

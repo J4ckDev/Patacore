@@ -89,15 +89,17 @@
                     android:text="@string/txt_cantidad_p"
                     android:textSize="15dp"
                     android:textStyle="bold"/>
+
                 <TextView
                     android:id="@+id/numCantidadDetalle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
                     android:text="@string/text_cantidad"
-                    android:textSize="15dp"
-                    android:paddingLeft="10dp"/>
+                    android:textSize="15dp" />
             </LinearLayout>
-            <View                android:layout_width="match_parent"
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@android:color/darker_gray"
                 ></View>

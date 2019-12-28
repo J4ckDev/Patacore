@@ -40,7 +40,6 @@ public class BDMenu {
     public static final String CAMPO_ESTADO ="estado";
 
 
-
     public static final String CREAR_TABLA_PEDIDO ="CREATE TABLE IF NOT EXISTS " + TABLA_PEDIDO +
             " ("+CAMPO_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOM_PROD+" TEXT, "+
             CAMPO_PRECIO+" INTEGER, "+ CAMPO_IMAGE+" TEXT, " +  CAMPO_DESCRIPTION+" TEXT, " +  CAMPO_ANOTACIONES+" TEXT, "

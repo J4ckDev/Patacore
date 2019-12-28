@@ -240,7 +240,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         Pedidos pedidos = new Pedidos();
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
-
+            pedidos.setId(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ID)));
             pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
             pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
             pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
@@ -266,6 +266,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 pedidos = new Pedidos();
+                pedidos.setId(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ID)));
                 pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
                 pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
                 pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));
@@ -294,6 +295,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 pedidos = new Pedidos();
+                pedidos.setId(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_ID)));
                 pedidos.setNombre(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_NOM_PROD)));
                 pedidos.setPrecio(cursor.getInt(cursor.getColumnIndex(BDMenu.CAMPO_PRECIO)));
                 pedidos.setImagen(cursor.getString(cursor.getColumnIndex(BDMenu.CAMPO_IMAGE)));

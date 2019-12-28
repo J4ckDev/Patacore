@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,8 +52,8 @@ public class EditarPlatoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //call the save person method
-                updatePerson();
-                goBackMenu();
+                validar();
+
             }
         });
 
@@ -83,6 +84,57 @@ public class EditarPlatoActivity extends AppCompatActivity {
 
         //call dbhelper update
          sqLiteFood.updateMenuFoodRecord(receivedPersonId, this, updatedPerson);
+        goBackMenu();
+    }
+
+    public void validar(){
+        foodNameUpdate.setError(null);
+        foodPriceUpdate.setError(null);
+        imgUpdate.setError(null);
+        descriptionUpdate.setError(null);
+        String nombre= foodNameUpdate.getText().toString();
+        String precio=foodPriceUpdate.getText().toString();
+        String imagen=imgUpdate.getText().toString();
+        String description=descriptionUpdate.getText().toString();
+
+        if (TextUtils.isEmpty(nombre)){
+            foodNameUpdate.setError(getString(R.string.error_campo_obligatorio));
+            foodNameUpdate.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(precio)){
+            foodPriceUpdate.setError(getString(R.string.error_campo_obligatorio));
+            foodPriceUpdate.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(imagen)){
+            imgUpdate.setError(getString(R.string.error_campo_obligatorio));
+            imgUpdate.requestFocus();
+            return;
+
+        }
+        if (TextUtils.isEmpty(description)){
+            descriptionUpdate.setError(getString(R.string.error_campo_obligatorio));
+            descriptionUpdate.requestFocus();
+            return;
+
+        }
+        int precioInt= Integer.parseInt(precio);
+
+        if (precioInt ==0){
+            foodPriceUpdate.setError(getString(R.string.mayor_que_0));
+            foodPriceUpdate.requestFocus();
+            return;
+        }
+        else{
+            updatePerson();
+        }
+
+
+        // Toast.makeText(getApplicationContext(), "Validacion Correcta", Toast.LENGTH_SHORT).show();
+
     }
 
     private void init() {
