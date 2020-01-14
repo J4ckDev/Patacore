@@ -45,7 +45,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
         Pedidos pedidos = sqLiteFood.getPedidosDetalle(receivedPedidoId);
         //set field to this user data
         txtNombreDetalle.setText(pedidos.getNombre());
-        txtMenuDetalle.setText(pedidos.getDescription());
+        //txtMenuDetalle.setText(pedidos.getDescription());
         numCantidadDetalle.setText(String.valueOf( pedidos.getCantidad()));
         txtContAnotaDetalle.setText(pedidos.getAnotacion());
         Picasso.with(this)
@@ -61,7 +61,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
     }
     private void init() {
         txtNombreDetalle = findViewById(R.id.txtNombreDetalle);
-        txtMenuDetalle = findViewById(R.id.txtMenuDetalle);
+        //txtMenuDetalle = findViewById(R.id.txtMenuDetalle);
         numCantidadDetalle = findViewById(R.id.numCantidadDetalle);
         txtContAnotaDetalle = findViewById(R.id.txtContAnotaDetalle);
         imgPedidoDetalle = findViewById(R.id.imgPedidoDetalle);
