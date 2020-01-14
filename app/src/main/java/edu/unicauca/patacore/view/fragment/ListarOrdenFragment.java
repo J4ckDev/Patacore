@@ -90,6 +90,25 @@ public class ListarOrdenFragment extends Fragment {
 
                         Toast.makeText(getActivity(), "Spinner item 3!" +mesaOption, Toast.LENGTH_SHORT).show();
                         break;
+                    case 3:
+                        mesaOption=4;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 4!" +mesaOption, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        mesaOption=5;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 5!" +mesaOption, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        mesaOption=6;
+                        recyclerview(viewe,mesaOption);
+
+                        Toast.makeText(getActivity(), "Spinner item 6!" +mesaOption, Toast.LENGTH_SHORT).show();
+                        break;
+
                 }
             }
             @Override

@@ -62,8 +62,8 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             }
         });
 
-        //insertPedidosPrueba();
-        //insertProductosPrueba();
+        insertPedidosPrueba();
+        insertProductosPrueba();
 
 
         //Agregarle a la barra la opción de regresar atrás
@@ -180,10 +180,10 @@ public class AgregarPlatoActivity extends AppCompatActivity {
     }
 
     public void insertPedidosPrueba(){
-        sqLiteFood.insertDataPedido("pollo", 5000,"https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "ddd", "aa",2, 1, "a","a",2);
-        sqLiteFood.insertDataPedido("papa", 4000,"https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg",  "ddd", "aaa",2, 1, "a","a",2);
-        sqLiteFood.insertDataPedido("arroz", 3000,"https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg",  "ddd", "aaa",2, 2, "a","a",2);
-        sqLiteFood.insertDataPedido("jugo", 2000,"https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "ddd","aaa", 2, 3, "a","a",2);
+        sqLiteFood.insertDataPedido("pollo", 5000,"https://image.freepik.com/foto-gratis/plato-pechuga-pollo_1205-4244.jpg",  "pollo a la plancha", "este esa en la nesa 1 tiene  pollo a la plancha ",1, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("papa", 4000,"https://peru21.pe/resizer/GjiPoTh0tNBPixu-SjuZ58BFDpM=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/ZCPPKN7SHBAA7HPUJHRUGHS32U.jpg",  "pollo con papas", "esta en la mesa 1 tiene de imagen un pollo con papas\"",2, 1, "a","a",2);
+        sqLiteFood.insertDataPedido("arroz", 3000,"https://cdn.pixabay.com/photo/2014/12/16/23/45/soup-570922_960_720.jpg",  "sopa", "aaa",3, 2, "a","a",2);
+        sqLiteFood.insertDataPedido("jugo", 2000,"https://www.reinadelaselva.pe/content/img_noticia/limonada.jpg",  "limonadaaaa","limonada grande y fria mesa 3", 4, 3, "a","a",2);
     }
 }
 /* @Override
