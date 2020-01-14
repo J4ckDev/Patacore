@@ -4,6 +4,7 @@ package edu.unicauca.patacore.view.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,14 +38,20 @@ public class MesaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_mesa, container, false);
+        int numberOfColumns = 2;
         View view= inflater.inflate(R.layout.fragment_mesa, container, false);
         RecyclerView mesaRecycler =view.findViewById(R.id.mesaRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
-        mesaRecycler.setLayoutManager(linearLayoutManager);
+
+        //mesaRecycler.setLayoutManager(linearLayoutManager);
+        mesaRecycler.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
         MesaAdapterRecyclerView mesaAdapterRecyclerView =
                 new MesaAdapterRecyclerView(buildLista(),R.layout.cardview_mesa, getActivity());
         mesaRecycler.setAdapter(mesaAdapterRecyclerView);
+
+
+
         //TOLBAR
         //showToolbar("Lista Pedidos", false, view);
 
@@ -64,5 +71,7 @@ public class MesaFragment extends Fragment {
         return mesa;
 
     }
+
+
 
 }

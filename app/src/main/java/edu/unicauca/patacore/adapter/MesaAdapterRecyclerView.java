@@ -1,6 +1,7 @@
 package edu.unicauca.patacore.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,17 +28,25 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
     private ArrayList<Mesa> mesaArrayList;
     private int resource;
     private Activity activity;
+    private String[] mData;
+    private LayoutInflater mInflater;
+   // private ItemClickListener mClickListener;
 
     public MesaAdapterRecyclerView(ArrayList<Mesa> mesaArrayList, int resource, Activity activity) {
         this.mesaArrayList = mesaArrayList;
         this.resource = resource;
         this.activity = activity;
     }
+    public MesaAdapterRecyclerView(Context context, String[] data) {
+        this.mInflater = LayoutInflater.from(context);
+        this.mData = data;
+    }
 
     @NonNull
     @Override
     public MesaAViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
+       // View view = mInflater.inflate(R.layout.cardview_mesa, parent, false);
         return new MesaAViewHolder(view);
     }
 
