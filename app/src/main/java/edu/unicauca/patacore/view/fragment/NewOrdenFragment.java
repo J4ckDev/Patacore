@@ -35,6 +35,7 @@ import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Producto;
 import edu.unicauca.patacore.adapter.PedidosNewAdapterRecycler;
 import edu.unicauca.patacore.data.utilidades.Utilidades;
+import edu.unicauca.patacore.view.AddActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,7 +81,7 @@ public class NewOrdenFragment extends Fragment {
         //actualizarEstadoSelected();
         //consultaSQL();
 
-        adapter = new PedidosNewAdapterRecycler(context, 1);
+        adapter = new PedidosNewAdapterRecycler(context, getActivity(), 1);
         //adapter = new PedidosNewAdapterRecycler(context);
         recyclerProductos.setAdapter(adapter);
 

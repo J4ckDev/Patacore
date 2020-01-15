@@ -62,7 +62,7 @@ public class AddActivity extends AppCompatActivity {
 
 
 
-        adapter = new PedidosNewAdapterRecycler(context, mesa);
+        adapter = new PedidosNewAdapterRecycler(context, AddActivity.this, mesa);
         //adapter = new PedidosNewAdapterRecycler(context);
         recyclerProductos.setAdapter(adapter);
         fabActualizarPedido = (FloatingActionButton) findViewById(R.id.fbtnActualizar);
@@ -84,6 +84,7 @@ public class AddActivity extends AppCompatActivity {
                                     menu.setTxtPrecio(String.valueOf(listaMenu.get(i).getPrecio()));
                                     menu.setAnotacion(listaMenu.get(i).getAnotacion());
                                     menu.setTxtDescription(listaMenu.get(i).getDescription());
+                                    menu.setImg(listaMenu.get(i).getImagen());
                                     sqLiteFood.regPedido(mesa, 2, menu);
                                 }
                             }

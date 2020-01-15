@@ -194,6 +194,7 @@ public class SQLiteFood extends SQLiteOpenHelper {
         values.put(BDMenu.CAMPO_MESA, mesa);
         values.put(BDMenu.CAMPO_FECHA, "");
         values.put(BDMenu.CAMPO_HORA, "");
+        values.put(BDMenu.CAMPO_IMAGE,menu.getImg());
         values.put(BDMenu.CAMPO_ESTADO, estado);
         values.put(BDMenu.CAMPO_NOM_PROD, menu.getTxtNombre());
         values.put(BDMenu.CAMPO_CANT_PRODUCTO, menu.getCantidad());

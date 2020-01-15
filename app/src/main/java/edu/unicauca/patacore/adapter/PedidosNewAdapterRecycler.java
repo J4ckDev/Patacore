@@ -1,5 +1,6 @@
 package edu.unicauca.patacore.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,15 +43,18 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
     Gson gson = new Gson();
 
+    Activity activity;
+
 
     public PedidosNewAdapterRecycler(ArrayList<Menu> listaMenu, Context context) {
         this.listaMenu = listaMenu;
         sqLiteFood = new SQLiteFood(context);
     }
 
-    public PedidosNewAdapterRecycler(Context context, int mesa) {
+    public PedidosNewAdapterRecycler(Context context, Activity activity, int mesa) {
         this.mesa= mesa;
         this.context = context;
+        this.activity = activity;
         sqLiteFood = new SQLiteFood(context);
         ArrayList<Menu> lst = sqLiteFood.buildListas();
         listaMenu = new ArrayList<Menu>();
@@ -188,6 +193,12 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         holder.etiNombre.setText(listaMenu.get(position).getTxtNombre());
         holder.etiInformacion.setText(listaMenu.get(position).getTxtDescription());
         holder.etiFoto.setImageResource(R.drawable.panadero);
+
+        Picasso.with(activity)
+                .load(listaMenu.get(position).getImg())
+                .resize(120, 120)
+                .error(R.drawable.panadero)
+                .into(holder.etiFoto);
         holder.numProd.setText(String.valueOf(listaMenu.get(position).getCantidad()));
         holder.checkProducto.setChecked(listaMenu.get(position).getSelected());
 

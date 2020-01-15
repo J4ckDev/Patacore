@@ -1,13 +1,16 @@
 package edu.unicauca.patacore.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +20,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import edu.unicauca.patacore.R;
+import edu.unicauca.patacore.data.db.SQLiteFood;
+import edu.unicauca.patacore.model.Menu;
 import edu.unicauca.patacore.model.Mesa;
 import edu.unicauca.patacore.view.AddActivity;
 
@@ -30,12 +35,14 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
     private Activity activity;
     private String[] mData;
     private LayoutInflater mInflater;
+    private SQLiteFood sqLiteFood;
    // private ItemClickListener mClickListener;
 
     public MesaAdapterRecyclerView(ArrayList<Mesa> mesaArrayList, int resource, Activity activity) {
         this.mesaArrayList = mesaArrayList;
         this.resource = resource;
         this.activity = activity;
+
     }
     public MesaAdapterRecyclerView(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
@@ -64,10 +71,42 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
         holder.imgCardMesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, AddActivity.class);
-                intent.putExtra("mesa", mesa.getTxtCardMesa());
+                    Intent intent = new Intent(activity, AddActivity.class);
+                    intent.putExtra("mesa", mesa.getTxtCardMesa());
+                    activity.startActivity(intent);
+            }
+        });
+        final Context contexto = holder.imgCardMesa.getContext();
+        final int mesaInt = Integer.parseInt(mesa.getTxtCardMesa());
+        this.sqLiteFood = new SQLiteFood(contexto);
+        holder.imgCardMesa.setOnLongClickListener(new View.OnLongClickListener() {
 
-                activity.startActivity(intent);
+            @Override
+            public boolean onLongClick(View v) {
+
+                AlertDialog.Builder alerta = new AlertDialog.Builder(contexto);
+                alerta.setMessage("Eliminar el pedido de la mesa "+mesaInt+"?")
+                        .setTitle("Elminar pedido")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                sqLiteFood.eliminarTotalPedido(mesaInt, 1);
+                                sqLiteFood.eliminarTotalPedido(mesaInt, 2);
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog titulo = alerta.create();
+                titulo.show();
+                Toast.makeText(activity, "Long Click detected", Toast.LENGTH_SHORT).show();
+
+                return true;
             }
         });
 
