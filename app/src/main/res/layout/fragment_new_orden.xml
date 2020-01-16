@@ -17,26 +17,28 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductos"
             android:layout_width="match_parent"
-            android:layout_height="457dp"
-            tools:listitem="@layout/recycler_delete">
+            android:layout_height="match_parent"
+            tools:listitem="@layout/productos">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnActualizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:elevation="8dp"
-            android:clickable="true"
-            android:src="@android:drawable/ic_menu_add"
-            android:visibility="visible"
-            app:elevation="6dp"
-            android:focusable="true" />
+
 
 
     </LinearLayout>
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbtnActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:elevation="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_add_circle_outline"
+        android:layout_marginRight="@dimen/hor_margin"
+        android:layout_marginBottom="@dimen/ver_margin"
+        android:translationZ="6dp"
+        app:borderWidth="0dp"
+        android:tint="@color/colorSecondary"/>
 
 </FrameLayout>

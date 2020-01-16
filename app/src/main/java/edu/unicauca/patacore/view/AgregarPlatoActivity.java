@@ -62,8 +62,8 @@ public class AgregarPlatoActivity extends AppCompatActivity {
             }
         });
 
-        insertPedidosPrueba();
-        insertProductosPrueba();
+        //insertPedidosPrueba();
+        //insertProductosPrueba();
 
 
         //Agregarle a la barra la opción de regresar atrás

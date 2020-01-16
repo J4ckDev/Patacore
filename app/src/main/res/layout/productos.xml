@@ -1,148 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="200dp"
+    android:layout_margin="@dimen/hor_margin">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/hor_margin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/colorSecondary">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imagenProd"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="@dimen/hor_margin"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <Button
+                    android:id="@+id/btnMas"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="@dimen/hor_margin"
+                    android:background="@drawable/ic_add_circle_outline"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    app:layout_constraintTop_toBottomOf="@id/imagenProd"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <Button
+                    android:id="@+id/btnMenos"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="@dimen/hor_margin"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:background="@drawable/ic_remove_circle_outline"
+                    app:layout_constraintTop_toBottomOf="@id/imagenProd"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <EditText
+                    android:id="@+id/txtNumProd"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:theme="@style/EditTextPed"
+                    app:layout_constraintTop_toBottomOf="@id/imagenProd"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btnMenos"
+                    app:layout_constraintRight_toLeftOf="@id/btnMas"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorSecondary">
 
-
-            <ImageView
-                android:id="@+id/imagenProd"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/nombreProd"
-                android:layout_width="0dp"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginRight="60dp"
-                android:text="Nombre"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintEnd_toStartOf="@+id/checkProd"
-                app:layout_constraintStart_toEndOf="@+id/imagenProd"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:gravity="center"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/nombreProd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Nombre"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:layout_margin="@dimen/hor_margin"/>
+
+                <CheckBox
+                    android:id="@+id/checkProd"
+                    android:layout_weight="0.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/hor_margin"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <TextView
                 android:id="@+id/descProducto"
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
                 android:text="Descripcion"
-                app:layout_constraintStart_toEndOf="@+id/imagenProd"
-                app:layout_constraintTop_toBottomOf="@+id/nombreProd" />
+                android:textColor="@color/colorPrimaryLight"
+                android:layout_margin="@dimen/hor_margin"/>
 
-            <CheckBox
-                android:id="@+id/checkProd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:theme="@style/EditTextPed">
 
-            <EditText
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:text="Anotaciones"
-                app:layout_constraintBottom_toBottomOf="@+id/txtNumProd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnMas"
-                app:layout_constraintTop_toBottomOf="@+id/imagenProd" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/hor_margin"
+                    android:hint="Anotaciones"
+                    android:textSize="16sp"
+                    android:ems="20"
+                    android:inputType="textMultiLine">
 
-            <Button
-                android:id="@+id/btnMas"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:text="+"
-                app:layout_constraintBottom_toBottomOf="@+id/txtNumProd"
-                app:layout_constraintStart_toEndOf="@+id/txtNumProd"
-                app:layout_constraintTop_toTopOf="@+id/txtNumProd" />
+                </com.google.android.material.textfield.TextInputEditText>
 
-            <Button
-                android:id="@+id/btnMenos"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:text="-"
-                app:layout_constraintBottom_toBottomOf="@+id/txtNumProd"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtNumProd" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/txtNumProd"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintStart_toEndOf="@+id/btnMenos"
-                app:layout_constraintTop_toBottomOf="@+id/imagenProd" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="8dp" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-    <TextView
+   <!--TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@color/colorPrimary"
         android:layout_below="@id/imagenProd"
-        android:layout_marginTop="11dp" />
+        android:layout_marginTop="11dp" /-->
 
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
