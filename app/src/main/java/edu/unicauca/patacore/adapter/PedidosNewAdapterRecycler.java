@@ -2,6 +2,8 @@ package edu.unicauca.patacore.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +78,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     if (listaProdPedidos.get(i).getCantidad() > 0) {
                         listaMenu.get(e).setSelected(true);
                         listaMenu.get(e).setCantidad(listaProdPedidos.get(i).getCantidad());
+                        listaMenu.get(e).setAnotacion(listaProdPedidos.get(i).getAnotacion());
                     }
                     break;
                 }
@@ -89,6 +92,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         TextView etiNombre, etiInformacion;
         ImageView etiFoto;
         EditText numProd;
+        EditText etiAnotacion;
 
         Button btnMas;
         Button btnMenos;
@@ -102,6 +106,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
             etiNombre = (TextView) itemView.findViewById(R.id.nombreProd);
             etiInformacion = (TextView) itemView.findViewById(R.id.descProducto);
             etiFoto = (ImageView) itemView.findViewById(R.id.imagenProd);
+            etiAnotacion = (EditText) itemView.findViewById(R.id.txtAnotacion);
             btnMas = (Button) itemView.findViewById(R.id.btnMas);
             btnMenos = (Button) itemView.findViewById(R.id.btnMenos);
             numProd = (EditText) itemView.findViewById(R.id.txtNumProd);
@@ -137,6 +142,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                     if (indice != -1) {
                         int newCantidad = listaMenu.get(indice).getCantidad() + 1;
                         listaMenu.get(indice).setCantidad(newCantidad);
+                        listaMenu.get(indice).setAnotacion(etiAnotacion.getText().toString());
                         if (checkProducto.isChecked()) {
                             sqLiteFood.actualizarPedido(mesa, 1, listaMenu.get(indice));
                         }
@@ -150,6 +156,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                         int cantActual = listaMenu.get(indice).getCantidad();
                         if (cantActual > 1) {
                             int newCantidad = cantActual - 1;
+                            listaMenu.get(indice).setAnotacion(etiAnotacion.getText().toString());
                             listaMenu.get(indice).setCantidad(newCantidad);
                             if (checkProducto.isChecked()) {
                                 sqLiteFood.actualizarPedido(mesa, 1, listaMenu.get(indice));
@@ -161,6 +168,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
                 case R.id.checkProd:
                     if (indice != -1) {
+                        listaMenu.get(indice).setAnotacion(etiAnotacion.getText().toString());
                         listaMenu.get(indice).setSelected(checkProducto.isChecked());
                         if (checkProducto.isChecked() && listaMenu.get(indice).getCantidad()==0){
                             listaMenu.get(indice).setCantidad(1);
@@ -188,12 +196,12 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderProductos holder, int position) {
+    public void onBindViewHolder(final ViewHolderProductos holder, int position) {
 
         holder.etiNombre.setText(listaMenu.get(position).getTxtNombre());
         holder.etiInformacion.setText(listaMenu.get(position).getTxtDescription());
         holder.etiFoto.setImageResource(R.drawable.panadero);
-
+        holder.etiAnotacion.setText(listaMenu.get(position).getAnotacion());
         Picasso.with(activity)
                 .load(listaMenu.get(position).getImg())
                 .resize(120, 120)
@@ -203,6 +211,42 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         holder.checkProducto.setChecked(listaMenu.get(position).getSelected());
 
         holder.setOnClickListeners();
+
+        holder.etiAnotacion.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //System.out.println(s.toString() + " " + start + " " + count + " " + after);
+                String nombre = (String) holder.etiNombre.getText();
+                int indice = holder.buscarProducto(nombre);
+
+                if (indice != -1) {
+                    listaMenu.get(indice).setAnotacion(holder.etiAnotacion.getText().toString());
+                    listaMenu.get(indice).setSelected(holder.checkProducto.isChecked());
+                    if (holder.checkProducto.isChecked() && listaMenu.get(indice).getCantidad()==0){
+                        listaMenu.get(indice).setCantidad(1);
+
+                    }
+                    if (holder.checkProducto.isChecked()) {
+                        sqLiteFood.eliminarPedido(mesa, 1, listaMenu.get(indice));
+                        sqLiteFood.regPedido(mesa,1,listaMenu.get(indice));
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //System.out.println(s.toString() + " " + start + " " + count);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //System.out.println(s.toString());
+            }
+        });
     }
 
     @Override
