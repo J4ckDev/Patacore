@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "928251344150",
+    "firebase_url": "https://patacore-cf857.firebaseio.com",
+    "project_id": "patacore-cf857",
+    "storage_bucket": "patacore-cf857.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928251344150:android:85a4bf2d010a7367660c37",
+        "android_client_info": {
+          "package_name": "edu.unicauca.patacore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928251344150-lnp54df9r8f4h613k0d08ipgluu46bob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDolQQjRmhPwN_SaeaMtikO4ksG-nC-X0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928251344150-lnp54df9r8f4h613k0d08ipgluu46bob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
