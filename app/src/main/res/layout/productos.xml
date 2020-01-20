@@ -121,7 +121,7 @@
                 android:theme="@style/EditTextPed">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/txtAnotacion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/hor_margin"
