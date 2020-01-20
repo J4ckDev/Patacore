@@ -85,6 +85,7 @@ public class AddActivity extends AppCompatActivity {
                                     menu.setAnotacion(listaMenu.get(i).getAnotacion());
                                     menu.setTxtDescription(listaMenu.get(i).getDescription());
                                     menu.setImg(listaMenu.get(i).getImagen());
+
                                     sqLiteFood.regPedido(mesa, 2, menu);
                                 }
                             }

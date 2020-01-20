@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -192,8 +195,14 @@ public class SQLiteFood extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(BDMenu.CAMPO_MESA, mesa);
-        values.put(BDMenu.CAMPO_FECHA, "");
-        values.put(BDMenu.CAMPO_HORA, "");
+
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        values.put(BDMenu.CAMPO_FECHA, dateFormat.format(date));
+
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        values.put(BDMenu.CAMPO_HORA, hourFormat.format(date));
+
         values.put(BDMenu.CAMPO_IMAGE,menu.getImg());
         values.put(BDMenu.CAMPO_ESTADO, estado);
         values.put(BDMenu.CAMPO_NOM_PROD, menu.getTxtNombre());
