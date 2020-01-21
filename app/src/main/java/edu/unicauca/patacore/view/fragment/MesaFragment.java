@@ -41,8 +41,8 @@ public class MesaFragment extends Fragment {
         int numberOfColumns = 2;
         View view= inflater.inflate(R.layout.fragment_mesa, container, false);
         RecyclerView mesaRecycler =view.findViewById(R.id.mesaRecycler);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        //linearLayoutManager.setOrientation(linearLayoutManager.VERTICAL);
 
         //mesaRecycler.setLayoutManager(linearLayoutManager);
         mesaRecycler.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));

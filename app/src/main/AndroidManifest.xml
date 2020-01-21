@@ -35,10 +35,17 @@
                 android:value=".view.ContainerActivity"/>
         </activity>
 
-        <activity android:name=".view.AddActivity" />
+        <activity android:name=".view.AddActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".view.ContainerActivity"/>
+        </activity>
+
 
         <activity android:name=".view.PedidoDetalleActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.ContainerActivity"/>
         </activity>
 
         <activity

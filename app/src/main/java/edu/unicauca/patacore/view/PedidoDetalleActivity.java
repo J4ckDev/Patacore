@@ -37,6 +37,7 @@ public class PedidoDetalleActivity extends AppCompatActivity {
             receivedPedidoId=getIntent().getLongExtra("ID",4);
             //int a = getIntent().getExtras().get("id", 1);
             //getSupportActionBar().setTitle(getIntent().getExtras().get("mesa").toString());
+            showToolbar("",true);
 
         } catch (Exception e) {
             e.printStackTrace();
