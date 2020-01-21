@@ -216,35 +216,32 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //System.out.println(s.toString() + " " + start + " " + count + " " + after);
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 String nombre = (String) holder.etiNombre.getText();
                 int indice = holder.buscarProducto(nombre);
 
                 if (indice != -1) {
                     listaMenu.get(indice).setAnotacion(holder.etiAnotacion.getText().toString());
                     listaMenu.get(indice).setSelected(holder.checkProducto.isChecked());
-                    if (holder.checkProducto.isChecked() && listaMenu.get(indice).getCantidad()==0){
+                    if (holder.checkProducto.isChecked() && listaMenu.get(indice).getCantidad() == 0) {
                         listaMenu.get(indice).setCantidad(1);
 
                     }
                     if (holder.checkProducto.isChecked()) {
                         sqLiteFood.eliminarPedido(mesa, 1, listaMenu.get(indice));
-                        sqLiteFood.regPedido(mesa,1,listaMenu.get(indice));
+                        sqLiteFood.regPedido(mesa, 1, listaMenu.get(indice));
                     }
 
                 }
-
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //System.out.println(s.toString() + " " + start + " " + count);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                //System.out.println(s.toString());
             }
         });
     }
