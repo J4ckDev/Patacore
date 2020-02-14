@@ -24,10 +24,7 @@
           android:id="@+id/menuListRecycler"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          tools:listitem="@layout/cardview_list"
-         >
-
-      </androidx.recyclerview.widget.RecyclerView>
+          tools:listitem="@layout/cardview_list"/>
 
    </LinearLayout>
 

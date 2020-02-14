@@ -1,6 +1,8 @@
 package edu.unicauca.patacore.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,14 +13,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.adapter.PedidosNewAdapterRecycler;
@@ -37,18 +42,28 @@ public class AddActivity extends AppCompatActivity {
     RecyclerView recyclerProductos;
     PedidosNewAdapterRecycler adapter;
     Context context;
+    TextView pedMesa;
 
     FloatingActionButton fabActualizarPedido;
 
     SQLiteFood sqLiteFood;
+    String textoPed;
     int mesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_new_orden);
-        mesa = Integer.parseInt(getIntent().getExtras().get("mesa").toString());
-        getSupportActionBar().setTitle("Mesa " + String.valueOf(mesa));
+
+        pedMesa = findViewById(R.id.numMesa);
+
+        mesa = Integer.parseInt(Objects.requireNonNull(Objects.requireNonNull(getIntent().getExtras()).get("mesa")).toString());
+        textoPed = "Mesa " + mesa;
+        pedMesa.setText(textoPed);
+
+        showToolbar("",true);
+
+        //getSupportActionBar().setTitle("Mesa " + mesa);
 
         context = getApplicationContext();
         sqLiteFood = new SQLiteFood(context);
@@ -102,4 +117,17 @@ public class AddActivity extends AppCompatActivity {
         });
 
     }
+
+    public void showToolbar(String title, boolean upBotton){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null) {
+            getSupportActionBar().setTitle(title);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
+            getSupportActionBar().setDisplayShowHomeEnabled(upBotton);
+        }
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingList);
+    }
+
 }

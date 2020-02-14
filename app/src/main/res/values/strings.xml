@@ -27,7 +27,7 @@
     <!--tabs-->
     <string name="tab_new">Nuevo</string>
     <string name="tab_add">Add</string>
-    <string name="tab_listar">Listar</string>
+    <string name="tab_listar">Detalles</string>
     <string name="tab_del">Del</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -49,7 +49,7 @@
     <string name="txt_info_menu">Contiene:</string>
 
     <string name="tab_menu">Menú</string>
-    <string name="tab_pedido">Pedido</string>
+    <string name="tab_pedido">Pedidos</string>
 
     <string name="txt_mesa">1</string>
     <string name="txt_description">pollo,arroz</string>
@@ -77,6 +77,8 @@
     <string name="error_campo_numerico">Campo Numerico</string>
     <string name="mayor_que_0">Valor Mayor que 0</string>
 
+    <!--Productos-->
+    <string name="Anotation">Anotaciones</string>
 
 
 </resources>

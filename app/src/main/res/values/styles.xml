@@ -55,4 +55,9 @@
         <item name="colorControlHighlight">@color/PrimaryLightHighlight</item>
     </style>
 
+    <style name="checkbox" parent="Theme.AppCompat.Light">
+        <item name="borderlessButtonStyle">@color/colorPrimaryLight</item>
+        <item name="android:buttonTint">@color/colorPrimaryLight</item>
+    </style>
+
 </resources>

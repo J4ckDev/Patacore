@@ -47,9 +47,9 @@ public class ListarOrdenFragment extends Fragment {
         final View viewe= inflater.inflate(R.layout.fragment_listar_orden, container, false);
         //initialize the variables
         //TOLBAR
-        Toolbar toolbar = viewe.findViewById(R.id.toolbarMesa);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //Toolbar toolbar = viewe.findViewById(R.id.toolbarMesa);
+        //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //Appbar page filter
         Spinner cmbToolbar = (Spinner) viewe.findViewById(R.id.CmbToolbar);

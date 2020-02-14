@@ -10,13 +10,13 @@
        <item
            android:id="@+id/pedidoTab"
            android:title="@string/tab_pedido"
-           android:icon="@drawable/ic_playlist_add_check"
+           android:icon="@drawable/ic_add"
            />
 
         <item
             android:id="@+id/listarTab"
             android:title="@string/tab_listar"
-            android:icon="@drawable/ic_add"
+            android:icon="@drawable/ic_playlist_add_check"
             />
 
 

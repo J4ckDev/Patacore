@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:elevation="8dp"
         android:layout_margin="@dimen/hor_margin">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -92,7 +93,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
-                    android:text="Nombre"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryLight"
@@ -103,7 +103,8 @@
                     android:layout_weight="0.1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/hor_margin"/>
+                    android:layout_margin="@dimen/hor_margin"
+                    android:theme="@style/checkbox"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -111,7 +112,6 @@
                 android:id="@+id/descProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripcion"
                 android:textColor="@color/colorPrimaryLight"
                 android:layout_margin="@dimen/hor_margin"/>
 
@@ -125,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/hor_margin"
-                    android:hint="Anotaciones"
+                    android:hint="@string/Anotation"
                     android:textSize="16sp"
                     android:ems="20"
                     android:inputType="textMultiLine">

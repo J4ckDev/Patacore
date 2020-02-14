@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout
+<androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/toolbarMesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondary"
+        android:gravity="center"
+        android:elevation="12dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ImageView
+            android:id="@+id/imgPlato"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/hor_margin"
+            android:background="@drawable/mesadet" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalles"
+            android:textAlignment="center"
+            android:textColor="@color/icons"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/CmbToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/icons"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+<!--com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,13 +51,13 @@
         android:title="Estado: "
         android:background="@color/colorPrimary"
         android:theme="@style/Theme.AppCompat.Light">
-      <!--  <TextView
+        <TextView
             android:id="@+id/mesaOption"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:text="@string/nro_mesa"
-            android:textSize="15dp"/>-->
+            android:textSize="15dp"/>>
 
         <Spinner android:id="@+id/CmbToolbar"
             android:layout_width="wrap_content"
@@ -27,7 +65,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
-<!--style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"-->
+<style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
 
 
 
@@ -45,11 +83,11 @@
             android:layout_height="match_parent"
             android:paddingLeft="20dp"
             android:text="@string/txt_estado_toolbar"/>
-     <!--   <CheckBox
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:button="@drawable/bottom_nav_color"/>-->
+            android:button="@drawable/bottom_nav_color"/>
 
     </androidx.appcompat.widget.Toolbar>
 
-</com.google.android.material.appbar.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout-->
