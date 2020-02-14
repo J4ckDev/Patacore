@@ -104,7 +104,7 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
                         });
                 AlertDialog titulo = alerta.create();
                 titulo.show();
-                Toast.makeText(activity, "Long Click detected", Toast.LENGTH_SHORT).show();
+
 
                 return true;
             }

@@ -58,7 +58,7 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
         this.context = context;
         this.activity = activity;
         sqLiteFood = new SQLiteFood(context);
-        ArrayList<Menu> lst = sqLiteFood.buildListas();
+        //ArrayList<Menu> lst = sqLiteFood.buildListas();
         listaMenu = new ArrayList<Menu>();
         listaMenu = sqLiteFood.buildListas();
         actualizarEstado();
@@ -176,7 +176,6 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
                         }
                         if (checkProducto.isChecked() && !(sqLiteFood.existe(mesa, 1, listaMenu.get(indice).getTxtNombre()))) {
                             sqLiteFood.regPedido(mesa,1,listaMenu.get(indice));
-                            //Toast.makeText(context, "Registrado", Toast.LENGTH_SHORT).show();
                         } else {
                             sqLiteFood.eliminarPedido(mesa, 1, listaMenu.get(indice));
                         }

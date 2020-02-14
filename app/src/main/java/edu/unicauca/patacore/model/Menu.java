@@ -10,7 +10,7 @@ public class Menu {
     private int cantidad;
     private boolean selected;
     private String anotacion;
-    //private byte[] image;
+
     public  Menu(){
 
     }

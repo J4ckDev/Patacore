@@ -68,48 +68,7 @@ public class ListarOrdenFragment extends Fragment {
         cmbToolbar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
-                switch (position) {
-                    case 0:
-                        mesaOption=1;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 1!"+ mesaOption, Toast.LENGTH_SHORT).show();
-
-                        break;
-                    case 1:
-                        mesaOption=2;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 2!"+mesaOption, Toast.LENGTH_SHORT).show();
-
-                        break;
-                    case 2:
-                        mesaOption=3;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 3!" +mesaOption, Toast.LENGTH_SHORT).show();
-                        break;
-                    case 3:
-                        mesaOption=4;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 4!" +mesaOption, Toast.LENGTH_SHORT).show();
-                        break;
-                    case 4:
-                        mesaOption=5;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 5!" +mesaOption, Toast.LENGTH_SHORT).show();
-                        break;
-                    case 5:
-                        mesaOption=6;
-                        recyclerview(viewe,mesaOption);
-
-                        Toast.makeText(getActivity(), "Spinner item 6!" +mesaOption, Toast.LENGTH_SHORT).show();
-                        break;
-
-                }
+                recyclerview(viewe,position+1);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

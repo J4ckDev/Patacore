@@ -21,7 +21,7 @@ public class BDMenu {
             "(id_food INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image VARCHAR, description VARCHAR)");
 
     public static final String DELETE_TABLA_MENU="DROP TABLE IF EXISTS "+ TABLE_MENU;
-    public static final String DROG="DROP TABLE IF EXISTS "+ TABLE_MENU;
+    public static final String DROP="DROP TABLE IF EXISTS "+ TABLE_MENU;
 
     //PEDIDOS
 
