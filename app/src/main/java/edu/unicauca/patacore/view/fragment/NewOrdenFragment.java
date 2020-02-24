@@ -26,8 +26,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import edu.unicauca.patacore.MainMenuActivity;
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.data.ConexionSQLiteHelper;
 import edu.unicauca.patacore.data.GestorSQL;

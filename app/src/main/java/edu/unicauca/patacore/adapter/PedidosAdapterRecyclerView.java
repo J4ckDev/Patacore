@@ -135,7 +135,7 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
             txtNombre = itemView.findViewById(R.id.txtNombre);
             txtPrecio = itemView.findViewById(R.id.txtPrecio);
             txtCantidadList =itemView.findViewById(R.id.txtCantidadList);
-            textDateCard =itemView.findViewById(R.id.textDateCard);
+            //textDateCard =itemView.findViewById(R.id.textDateCard);
             textDatActCard =itemView.findViewById(R.id.textDatActCard);
 
         }

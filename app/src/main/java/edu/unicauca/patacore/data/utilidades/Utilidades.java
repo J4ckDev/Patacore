@@ -1,8 +1,6 @@
 package edu.unicauca.patacore.data.utilidades;
 
-/**
- * Created by CHENAO on 7/05/2017.
- */
+
 
 public class Utilidades {
 
