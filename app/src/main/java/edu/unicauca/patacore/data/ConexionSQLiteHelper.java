@@ -3,9 +3,7 @@ package edu.unicauca.patacore.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import edu.unicauca.patacore.data.utilidades.Utilidades;
-
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 

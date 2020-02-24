@@ -10,18 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.data.db.SQLiteFood;
-import edu.unicauca.patacore.model.Menu;
 import edu.unicauca.patacore.model.Mesa;
 import edu.unicauca.patacore.view.AddActivity;
 
@@ -36,7 +30,6 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
     private String[] mData;
     private LayoutInflater mInflater;
     private SQLiteFood sqLiteFood;
-   // private ItemClickListener mClickListener;
 
     public MesaAdapterRecyclerView(ArrayList<Mesa> mesaArrayList, int resource, Activity activity) {
         this.mesaArrayList = mesaArrayList;
@@ -44,16 +37,11 @@ public class MesaAdapterRecyclerView extends RecyclerView.Adapter<MesaAdapterRec
         this.activity = activity;
 
     }
-    public MesaAdapterRecyclerView(Context context, String[] data) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
-    }
 
     @NonNull
     @Override
     public MesaAViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
-       // View view = mInflater.inflate(R.layout.cardview_mesa, parent, false);
         return new MesaAViewHolder(view);
     }
 

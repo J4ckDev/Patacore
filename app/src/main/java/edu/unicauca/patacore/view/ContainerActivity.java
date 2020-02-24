@@ -2,15 +2,12 @@ package edu.unicauca.patacore.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.view.fragment.ListarOrdenFragment;
 import edu.unicauca.patacore.view.fragment.MenuFragment;
@@ -64,14 +61,4 @@ public class ContainerActivity extends AppCompatActivity {
                         }
                     }
 
- //TOOLBAR
-  //NO PROBLEM !!!!
-    public void showToolbar(String title, boolean upBotton){
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upBotton);
-
-
-    }
 }

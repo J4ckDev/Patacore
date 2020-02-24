@@ -2,9 +2,7 @@
 
 <androidx.cardview.widget.CardView
 xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:cardview="http://schemas.android.com/tools"
-xmlns:tools="http://schemas.android.com/tools"
 android:orientation="vertical"
 android:layout_margin="10dp"
 android:layout_width="match_parent"
@@ -39,15 +37,6 @@ android:id="@+id/menuCard">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <!--TextView
-                android:id="@+id/textDateCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textdate_card"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryLight"
-                android:paddingRight="5dp"
-                android:textSize="12sp"/-->
 
             <TextView
                 android:id="@+id/textDatActCard"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <item
@@ -9,13 +8,3 @@
         />
 
 </menu>
-
-
-<!--        android:icon="@android:drawable/ic_menu_add"-->
-    <!--
-    <item
-    android:id="@+id/filterSpinner"
-    android:title="Filter Spinner"
-    app:actionViewClass="android.widget.Spinner"
-    android:background="#fff"
-    app:showAsAction="always" />-->

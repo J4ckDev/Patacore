@@ -47,16 +47,6 @@
                     android:paddingRight="10dp"
                     android:visibility="gone"
                     />
-                <!--TextView
-                    android:id="@+id/btnPrep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_categoria"
-                    android:background="@color/colorSecondary"
-                    android:textColor="@color/colorPrimary"
-                    android:textAlignment="viewStart"
-                    android:gravity="center"
-                    cardview:ignore="RtlCompat" /-->
 
                 <TextView
                     android:id="@+id/txtNombreMenu"

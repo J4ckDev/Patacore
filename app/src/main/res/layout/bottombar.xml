@@ -16,10 +16,5 @@
     app:itemTextColor="@color/colorPrimaryLight"
     >
 
- <!--   app:itemTextColor="@color/colorPrimaryLight"
-        app:itemTextColor="@color/colorPrimary"
-        app:itemIconTint="@color/colorPrimaryDar"
-       -->
-
 
 </com.google.android.material.bottomnavigation.BottomNavigationView>

@@ -5,36 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.adapter.PedidosNewAdapterRecycler;
-import edu.unicauca.patacore.data.ConexionSQLiteHelper;
-import edu.unicauca.patacore.data.GestorSQL;
 import edu.unicauca.patacore.data.db.SQLiteFood;
-import edu.unicauca.patacore.data.utilidades.Utilidades;
 import edu.unicauca.patacore.model.Menu;
-import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Pedidos;
-import edu.unicauca.patacore.model.Producto;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -63,8 +48,6 @@ public class AddActivity extends AppCompatActivity {
 
         showToolbar("",true);
 
-        //getSupportActionBar().setTitle("Mesa " + mesa);
-
         context = getApplicationContext();
         sqLiteFood = new SQLiteFood(context);
         FloatingActionButton btnAct = (FloatingActionButton) findViewById(R.id.fbtnActualizar);
@@ -78,7 +61,6 @@ public class AddActivity extends AppCompatActivity {
 
 
         adapter = new PedidosNewAdapterRecycler(context, AddActivity.this, mesa);
-        //adapter = new PedidosNewAdapterRecycler(context);
         recyclerProductos.setAdapter(adapter);
         fabActualizarPedido = (FloatingActionButton) findViewById(R.id.fbtnActualizar);
         fabActualizarPedido.setOnClickListener(new View.OnClickListener() {

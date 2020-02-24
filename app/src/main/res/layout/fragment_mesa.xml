@@ -8,9 +8,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.MesaFragment">
 
-
-    <!-- TODO: Update blank fragment layout -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -72,23 +69,3 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-<!--
-<GridLayout
-android:id="@+id/mesasGrid"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:numColumns="auto_fit"
-android:columnWidth="100dp"
-android:alignmentMode="alignMargins"
-android:columnOrderPreserved="false" >
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/mesaRecycler"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:listitem="@layout/cardview_mesa"
-    >
-</androidx.recyclerview.widget.RecyclerView>
-
-
-</GridLayout>-->

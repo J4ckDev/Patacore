@@ -12,26 +12,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.data.ConexionSQLiteHelper;
-import edu.unicauca.patacore.data.GestorSQL;
-import edu.unicauca.patacore.data.db.BDMenu;
-import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Pedidos;
-import edu.unicauca.patacore.model.Producto;
 import edu.unicauca.patacore.model.Menu;
 import edu.unicauca.patacore.data.db.SQLiteFood;
-
 
 public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAdapterRecycler.ViewHolderProductos> {
 
@@ -47,18 +36,11 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
     Activity activity;
 
-
-    public PedidosNewAdapterRecycler(ArrayList<Menu> listaMenu, Context context) {
-        this.listaMenu = listaMenu;
-        sqLiteFood = new SQLiteFood(context);
-    }
-
     public PedidosNewAdapterRecycler(Context context, Activity activity, int mesa) {
         this.mesa= mesa;
         this.context = context;
         this.activity = activity;
         sqLiteFood = new SQLiteFood(context);
-        //ArrayList<Menu> lst = sqLiteFood.buildListas();
         listaMenu = new ArrayList<Menu>();
         listaMenu = sqLiteFood.buildListas();
         actualizarEstado();
@@ -70,7 +52,6 @@ public class PedidosNewAdapterRecycler extends RecyclerView.Adapter<PedidosNewAd
 
         int tArrPPed = listaProdPedidos.size();
 
-        //Toast.makeText(context, "Tamaño productos pedidos: " + listaProdPedidos.get(0).getNombre(), Toast.LENGTH_SHORT).show();
         int tArrProd = listaMenu.size();
         for (int i = 0; i < tArrPPed; i++) {
             for (int e = 0; e < tArrProd; e++) {

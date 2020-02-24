@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="200dp"
@@ -127,7 +126,7 @@
                     android:layout_margin="@dimen/hor_margin"
                     android:hint="@string/Anotation"
                     android:textSize="16sp"
-                    android:ems="20"
+                    android:ems="100"
                     android:inputType="textMultiLine">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -137,14 +136,4 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-   <!--TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/colorPrimary"
-        android:layout_below="@id/imagenProd"
-        android:layout_marginTop="11dp" /-->
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,22 +3,15 @@ package edu.unicauca.patacore.view.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
-
 import edu.unicauca.patacore.R;
-import edu.unicauca.patacore.adapter.PedidosAdapterRecyclerView;
 import edu.unicauca.patacore.adapter.PedidosAddAdapterRecycler;
-import edu.unicauca.patacore.adapter.PedidosNewAdapterRecycler;
-import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.model.Producto;
 
 /**

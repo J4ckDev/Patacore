@@ -3,27 +3,18 @@ package edu.unicauca.patacore.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Picture;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.model.Menu;
-import edu.unicauca.patacore.model.Pedido;
 import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.view.PedidoDetalleActivity;
 
@@ -45,15 +36,6 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
         this.resource = resource;
         this.activity = activity;
     }
-    public PedidosAdapterRecyclerView(ArrayList<Pedidos> pedidosArrayList, int resource, Activity activity) {
-        this.pedidosArrayList = pedidosArrayList;
-        this.resource = resource;
-        this.activity = activity;
-    }
-
-
-
-
 
     @NonNull
     @Override
@@ -75,29 +57,17 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
        holder.txtNombre.setText(pedidos.getNombre());
        holder.txtPrecio.setText(String.valueOf(pedidos.getPrecio()));
        holder.txtCantidadList.setText(String.valueOf(pedidos.getCantidad()));
-       //holder.textDateCard.setText(String.valueOf(pedidos.getFecha()));
        holder.textDatActCard.setText(String.valueOf(pedidos.getHora()));
-
-      // holder.img_card_list.setImageResource(pedidosArrayList.get(position).getImg());
        Picasso.with(context)
                .load(pedidos.getImagen())
                .resize(120, 120)
                .error(R.drawable.panadero)
                .into(holder.img_card_list);
-        //.placeholder(R.drawable.panadero)
 
        holder.btnPrep.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               //Intent intent = new Intent(activity, PedidoDetalleActivity.class);
-               //intent.putExtra("id", pedidosArrayList.get(position).getId());
-               // activity.startActivity(intent);
                goToUpdateActivity(pedidos.getId());
-               //Intent intent = new Intent(context, PedidoDetalleActivity.class);
-               //intent.putExtra("ID", pedidos.getId());
-               //context.startActivity(intent);
-
-
            }
        });
 
@@ -135,13 +105,8 @@ public class PedidosAdapterRecyclerView extends RecyclerView.Adapter<PedidosAdap
             txtNombre = itemView.findViewById(R.id.txtNombre);
             txtPrecio = itemView.findViewById(R.id.txtPrecio);
             txtCantidadList =itemView.findViewById(R.id.txtCantidadList);
-            //textDateCard =itemView.findViewById(R.id.textDateCard);
             textDatActCard =itemView.findViewById(R.id.textDatActCard);
 
         }
-
-
-
-
     }
 }

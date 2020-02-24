@@ -31,9 +31,6 @@ import edu.unicauca.patacore.view.fragment.MenuFragment;
 public class SQLiteFood extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "foodBD.sqlite";
     public static final int DATABASE_VERSION = 1 ;
-    /*public SQLiteFood(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }*/
     Context context;
     public SQLiteFood(Context context){
 
@@ -44,8 +41,6 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        //SQLiteDatabase database = getWritableDatabase();
-        //sqLiteDatabase.execSQL(BDMenu.DELETE_TABLA_MENU);
         sqLiteDatabase.execSQL(BDMenu.CREATE_TABLA_MENU);
         sqLiteDatabase.execSQL(BDMenu.CREAR_TABLA_PEDIDO);
         //CREAR PEDIDO
@@ -67,17 +62,15 @@ public class SQLiteFood extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(BDMenu.COLUMN_FOOD_NAME, menu.getTxtNombre());
         values.put(BDMenu.COLUMN_FOOD_PRICE, menu.getTxtPrecio());
-        //values.put(BDMenu.COLUMN_FOOD_IMAGE, menu.getImage());
         // insert
         db.insert(BDMenu.TABLE_MENU,null, values);
         db.close();
     }
-    //public void insertData(String name, String price, byte[] imagePlato){
+
     public void insertData(String name, String price, String imagePlato, String description){
 
         SQLiteDatabase database = getWritableDatabase();
         String sql = "INSERT INTO "+ BDMenu.TABLE_MENU+" (name, price, image, description) VALUES (?, ?, ?,?)";
-        //String sql = "INSERT INTO FOOD VALUES (NULL, ?, ?, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, name);
@@ -112,13 +105,9 @@ public class SQLiteFood extends SQLiteOpenHelper {
                     menu.setTxtPrecio(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_PRICE)));
                     menu.setImg(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
                     menu.setTxtDescription(cursor.getString(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_DESCRIPTION)));
-                    // menu.setImage(cursor.getBlob(cursor.getColumnIndex(BDMenu.COLUMN_FOOD_IMAGE)));
                     menuArrayList.add(menu);
                 } while (cursor.moveToNext());
             }
-
-
-       // db.close();
 
         return menuArrayList;
     }
@@ -482,29 +471,3 @@ public class SQLiteFood extends SQLiteOpenHelper {
 
 
 }
-
-/*
-
-
-    //PARA CREAR LA TABLA FOOD ES LA QUE CREA LOS PLATOS
-    public void queryData(String sql){
-        SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql);
-
-    }
-    public void insertData(String name, String price, byte[] imagePlato){
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO FOOD VALUES (NULL, ?, ?, ?)";
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-        statement.bindString(1, name);
-        statement.bindString(2, price);
-        statement.bindBlob(3, imagePlato);
-        statement.executeInsert();
-
-    }
-    public Cursor getData(String sql){
-        SQLiteDatabase database= getReadableDatabase();
-        return database.rawQuery(sql, null);
-
-    }*/

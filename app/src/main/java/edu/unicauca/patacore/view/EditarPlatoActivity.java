@@ -3,14 +3,12 @@ package edu.unicauca.patacore.view;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import edu.unicauca.patacore.R;
 import edu.unicauca.patacore.data.db.SQLiteFood;
 import edu.unicauca.patacore.model.Menu;
@@ -59,7 +57,6 @@ public class EditarPlatoActivity extends AppCompatActivity {
 
         //Agregarle a la barra la opción de regresar atrás
         Toolbar toolbar = findViewById(R.id.toolbar);
-        //ActionBar actionBar=getSupportActionBar();
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar!=null) {
@@ -131,9 +128,6 @@ public class EditarPlatoActivity extends AppCompatActivity {
         else{
             updatePerson();
         }
-
-
-        // Toast.makeText(getApplicationContext(), "Validacion Correcta", Toast.LENGTH_SHORT).show();
 
     }
 

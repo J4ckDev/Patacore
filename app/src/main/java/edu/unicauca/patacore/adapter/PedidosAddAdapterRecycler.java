@@ -6,13 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-
 import edu.unicauca.patacore.R;
-import edu.unicauca.patacore.model.Pedidos;
 import edu.unicauca.patacore.model.Producto;
 
 public class PedidosAddAdapterRecycler extends RecyclerView.Adapter<PedidosAddAdapterRecycler.ViewHolderProductos>{
@@ -55,8 +51,6 @@ public class PedidosAddAdapterRecycler extends RecyclerView.Adapter<PedidosAddAd
     public void onBindViewHolder(ViewHolderProductos holder, int position) {
         holder.etiNombre.setText(listaProductos.get(position).getNombre());
         holder.etiInformacion.setText(listaProductos.get(position).getDescripcion());
-        //holder.etiFoto.setImageResource(listaProductos.get(position).getImagen());
-
     }
 
     @Override
