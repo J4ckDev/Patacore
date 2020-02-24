@@ -94,12 +94,14 @@ public class LoginActivity extends AppCompatActivity{
         if (!validateForm()) {
             return;
         }
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             usuario = true;
+
                         } else {
                             Toast.makeText(LoginActivity.this, "Autenticación fallida.",
                                     Toast.LENGTH_SHORT).show();
